@@ -1,6 +1,6 @@
 // Single source of truth for business details (NAP). Keep identical to Google Business Profile.
 
-export const SITE_URL = (process.env.NEXT_PUBLIC_SITE_URL ?? "https://bbmcconsultants.in").replace(/\/$/, "");
+export const SITE_URL = (process.env.NEXT_PUBLIC_SITE_URL ?? "https://balaji-benchmark-consultants-bbmc.onrender.com").replace(/\/$/, "");
 
 export const site = {
   name: "Balaji Benchmark Consultants",

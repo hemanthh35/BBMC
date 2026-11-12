@@ -12,7 +12,7 @@ npm run build && npm start
 
 ## Configure
 
-Copy `.env.example` to `.env.local` and set `NEXT_PUBLIC_SITE_URL` to the live domain. It drives canonical URLs, the sitemap and structured data.
+Copy `.env.example` to `.env.local`. `NEXT_PUBLIC_SITE_URL` defaults to https://balaji-benchmark-consultants-bbmc.onrender.com; set it if the domain changes. It drives canonical URLs, the sitemap and structured data.
 
 ## Where things live
 

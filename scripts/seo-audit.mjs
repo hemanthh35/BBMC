@@ -1,7 +1,7 @@
 // Crawls every URL in the sitemap of a running site and reports common SEO problems.
 // Usage: node scripts/seo-audit.mjs http://localhost:3000
 const base = (process.argv[2] ?? "http://localhost:3000").replace(/\/$/, "");
-const SITE = (process.env.NEXT_PUBLIC_SITE_URL ?? "https://bbmcconsultants.in").replace(/\/$/, "");
+const SITE = (process.env.NEXT_PUBLIC_SITE_URL ?? "https://balaji-benchmark-consultants-bbmc.onrender.com").replace(/\/$/, "");
 
 const xml = await (await fetch(`${base}/sitemap.xml`)).text();
 const urls = [...xml.matchAll(/<loc>([^<]+)<\/loc>/g)].map((m) => m[1].replace(SITE, base));
