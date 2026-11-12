@@ -16,7 +16,7 @@ export default function FloatingActions() {
         <WhatsAppIcon className="h-7 w-7" />
       </a>
       {/* Mobile: sticky call + WhatsApp bar */}
-      <div className="fixed inset-x-0 bottom-0 z-40 grid grid-cols-2 border-t border-line bg-white md:hidden">
+      <div className="fixed inset-x-0 bottom-0 z-40 grid grid-cols-2 border-t border-line bg-white pb-[env(safe-area-inset-bottom)] md:hidden">
         <a href={`tel:${site.phones[0].tel}`} className="flex min-h-14 items-center justify-center gap-2 font-semibold text-ink">
           <Phone className="h-5 w-5 text-brand-600" aria-hidden="true" /> Call
         </a>

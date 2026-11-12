@@ -35,6 +35,7 @@ export const viewport: Viewport = {
   themeColor: "#00a8e0",
   width: "device-width",
   initialScale: 1,
+  viewportFit: "cover",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
@@ -44,7 +45,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         {/* Enables scroll-reveal styles only when JS runs, so content is never hidden without JS */}
         <script dangerouslySetInnerHTML={{ __html: "document.documentElement.classList.add('js')" }} />
       </head>
-      <body className="pb-14 md:pb-0">
+      <body className="pb-[calc(3.5rem+env(safe-area-inset-bottom))] md:pb-0">
         <Header />
         <main id="main">{children}</main>
         <Footer />

@@ -55,14 +55,16 @@ export default function Hero() {
           </p>
         </div>
 
-        <div className="mt-10 flex flex-col gap-3 sm:flex-row">
-          <a href={`tel:${site.phones[0].tel}`} className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-brand-500 px-7 font-semibold text-white transition-colors duration-200 hover:bg-brand-600">
+        <div className="mt-10 grid grid-cols-2 gap-3 sm:flex sm:flex-row">
+          <a href={`tel:${site.phones[0].tel}`} className="col-span-2 inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-brand-500 px-7 font-semibold text-white transition-colors duration-200 hover:bg-brand-600">
             <Phone className="h-5 w-5" aria-hidden="true" /> Call Now
           </a>
-          <Link href="/#contact"className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-white/40 px-7 font-semibold text-white transition-colors duration-200 hover:bg-white hover:text-ink">
-            <MessageCircle className="h-5 w-5" aria-hidden="true" /> Get a Consultation
+          <Link href="/#contact" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-white/40 px-3 text-sm font-semibold text-white transition-colors duration-200 hover:bg-white hover:text-ink sm:px-7 sm:text-base">
+            <MessageCircle className="h-5 w-5 shrink-0" aria-hidden="true" />
+            <span className="sm:hidden">Consultation</span>
+            <span className="hidden sm:inline">Get a Consultation</span>
           </Link>
-          <a href={whatsappLink()} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-white/40 px-7 font-semibold text-white transition-colors duration-200 hover:bg-white hover:text-ink">
+          <a href={whatsappLink()} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-white/40 px-3 text-sm font-semibold text-white transition-colors duration-200 hover:bg-white hover:text-ink sm:px-7 sm:text-base">
             <WhatsAppIcon className="h-5 w-5" /> WhatsApp
           </a>
         </div>
@@ -71,7 +73,7 @@ export default function Hero() {
           <button type="button" onClick={() => go(index - 1)} aria-label="Previous slide" className="flex h-10 w-10 items-center justify-center rounded-full border border-white/30 text-white/80 transition-colors hover:bg-white hover:text-ink">
             <ChevronLeft className="h-5 w-5" />
           </button>
-          <div className="flex items-center gap-2" role="group" aria-label="Choose slide">
+          <div className="flex items-center" role="group" aria-label="Choose slide">
             {heroSlides.map((s, i) => (
               <button
                 key={s.title}
@@ -79,8 +81,10 @@ export default function Hero() {
                 onClick={() => go(i)}
                 aria-label={`Slide ${i + 1}: ${s.title}`}
                 aria-current={i === index}
-                className={`h-1.5 rounded-full transition-all duration-300 ${i === index ? "w-8 bg-brand-500" : "w-3 bg-white/40 hover:bg-white/70"}`}
-              />
+                className="group flex h-8 items-center px-1"
+              >
+                <span className={`block h-1.5 rounded-full transition-all duration-300 ${i === index ? "w-8 bg-brand-500" : "w-3 bg-white/40 group-hover:bg-white/70"}`} />
+              </button>
             ))}
           </div>
           <button type="button" onClick={() => go(index + 1)} aria-label="Next slide" className="flex h-10 w-10 items-center justify-center rounded-full border border-white/30 text-white/80 transition-colors hover:bg-white hover:text-ink">

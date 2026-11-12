@@ -89,7 +89,7 @@ export default function Testimonials() {
         <button type="button" onClick={prev} aria-label="Previous testimonial" className="flex h-11 w-11 items-center justify-center rounded-full border border-line text-ink transition-colors duration-200 hover:border-brand-500 hover:bg-brand-500 hover:text-white">
           <ChevronLeft className="h-5 w-5" />
         </button>
-        <div className="flex gap-2" role="group" aria-label="Choose testimonial">
+        <div className="flex" role="group" aria-label="Choose testimonial">
           {testimonials.map((t, i) => (
             <button
               key={t.name}
@@ -97,8 +97,10 @@ export default function Testimonials() {
               onClick={() => go(i, i > index ? 1 : -1)}
               aria-label={`Testimonial ${i + 1} from ${t.name}`}
               aria-current={i === index}
-              className={`h-2 rounded-full transition-all duration-300 ${i === index ? "w-8 bg-brand-500" : "w-2 bg-line hover:bg-ink-40"}`}
-            />
+              className="group flex h-8 items-center px-1"
+            >
+              <span className={`block h-2 rounded-full transition-all duration-300 ${i === index ? "w-8 bg-brand-500" : "w-2 bg-line group-hover:bg-ink-40"}`} />
+            </button>
           ))}
         </div>
         <button type="button" onClick={next} aria-label="Next testimonial" className="flex h-11 w-11 items-center justify-center rounded-full border border-line text-ink transition-colors duration-200 hover:border-brand-500 hover:bg-brand-500 hover:text-white">

@@ -30,6 +30,9 @@ html {
 }
 
 body {
+  /* keep content clear of the notch on iPhones in landscape */
+  padding-left: env(safe-area-inset-left);
+  padding-right: env(safe-area-inset-right);
   background: var(--color-paper);
   color: var(--color-ink);
   font-family: var(--font-sans);
