@@ -15,7 +15,7 @@ export default function PrivacyPage() {
       <PageHero crumbs={[{ name: "Privacy Policy", href: "/privacy-policy" }]} title="Privacy Policy" />
       <section className="py-16">
         <Container className="prose max-w-3xl prose-headings:font-display">
-          <p>This website does not store the details you enter in the enquiry form. When you submit it, your message opens in WhatsApp and is sent to BBMC only if you choose to send it.</p>
+          <p>This website does not collect or store personal details. You contact BBMC directly by phone, email or WhatsApp.</p>
           <h2>Information you share</h2>
           <p>When you call, email or message us, we use your name, phone number and project details only to respond to your enquiry and provide our services. We do not sell or share your information with third parties for marketing.</p>
           <h2>Analytics</h2>

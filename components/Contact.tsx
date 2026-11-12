@@ -1,7 +1,6 @@
 import { Clock, Mail, MapPin, Phone } from "lucide-react";
 import { site } from "@/content/site";
 import { socialLinks } from "./Footer";
-import EnquiryForm from "./EnquiryForm";
 import MapFacade from "./MapFacade";
 import { CallButton, WhatsAppButton } from "./ui";
 
@@ -54,8 +53,7 @@ export default function Contact() {
         </ul>
       </div>
 
-      <div className="space-y-8" data-reveal style={{ ["--reveal-delay" as string]: "120ms" }}>
-        <EnquiryForm />
+      <div data-reveal style={{ ["--reveal-delay" as string]: "120ms" }}>
         <MapFacade />
       </div>
     </div>
