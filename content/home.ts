@@ -2,38 +2,38 @@
 
 export const heroSlides = [
   {
-    image: "/images/hero/architects-engineers-hyderabad.webp",
+    image: "/img/hero/architects-engineers-hyderabad.webp",
     title: "Designing Dreams. Building Excellence.",
     subtitle:
       "Professional Architects, Engineers, Interior Designers, Vaasthu Experts, and Builders with 30+ Years of Excellence",
   },
   {
-    image: "/images/hero/expert-architects.webp",
+    image: "/img/hero/expert-architects.webp",
     title: "Expert Architects",
     subtitle: "Innovative architectural designs that blend creativity with functionality for your dream spaces",
   },
   {
-    image: "/images/hero/professional-engineers.webp",
+    image: "/img/hero/professional-engineers.webp",
     title: "Professional Engineers",
     subtitle: "Structural engineering excellence ensuring safety, durability, and precision in every project",
   },
   {
-    image: "/images/hero/vaasthu-consultants.webp",
+    image: "/img/hero/vaasthu-consultants.webp",
     title: "Vaasthu Consultants",
     subtitle: "Traditional Vaasthu-compliant designs bringing harmony, prosperity, and positive energy to your space",
   },
   {
-    image: "/images/hero/interior-designers.webp",
+    image: "/img/hero/interior-designers.webp",
     title: "Interior Designers",
     subtitle: "Transform your spaces with elegant interiors that reflect your style and personality",
   },
   {
-    image: "/images/hero/expert-builders.webp",
+    image: "/img/hero/expert-builders.webp",
     title: "Expert Builders",
     subtitle: "Quality construction from foundation to finish with attention to every detail",
   },
   {
-    image: "/images/hero/property-developers.webp",
+    image: "/img/hero/property-developers.webp",
     title: "Property Developers",
     subtitle: "Complete real estate development solutions for residential and commercial projects",
   },
@@ -129,7 +129,7 @@ const p = (slug: string, title: string, kind: "Architecture" | "Interior") => ({
   slug,
   title,
   kind,
-  image: `/images/${kind === "Architecture" ? "projects" : "interiors"}/${slug}.webp`,
+  image: `/img/${kind === "Architecture" ? "projects" : "interiors"}/${slug}.webp`,
   alt: `${title} – ${kind === "Architecture" ? "architecture project" : "interior design"} by BBMC, Hyderabad`,
 });
 

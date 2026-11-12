@@ -5,7 +5,7 @@ import { mkdir, stat } from "node:fs/promises";
 import path from "node:path";
 
 const src = process.argv[2] ?? "../bbmc/PerfectLanding/attached_assets";
-const out = path.resolve("public/images");
+const out = path.resolve("public/img");
 
 const map = {
   // Logo + founder
@@ -50,7 +50,7 @@ const map = {
 };
 
 // ---- Watermark: transparent BBMC logo (run scripts/make-logo.mjs first) ----
-const LOGO = path.resolve("public/images/bbmc-logo.png");
+const LOGO = path.resolve("public/img/bbmc-logo.png");
 const WM_WIDTH = 0.3; // logo width as a share of the photo width
 const WM_OPACITY = 0.45;
 

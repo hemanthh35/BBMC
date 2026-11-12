@@ -27,7 +27,7 @@ export function businessSchema() {
       "Architects, structural engineers, interior designers, Vaasthu (vastu) consultants, builders and developers in Hyderabad & Telangana since 1995.",
     url: SITE_URL,
     logo: `${SITE_URL}/icon.png`,
-    image: `${SITE_URL}/images/services/architects-hyderabad-hero.webp`,
+    image: `${SITE_URL}/img/services/architects-hyderabad-hero.webp`,
     telephone: site.phones[0].tel,
     email: site.email,
     foundingDate: String(site.foundingYear),

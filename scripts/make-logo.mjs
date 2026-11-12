@@ -1,5 +1,5 @@
 // Cuts the BBMC logo out of its dark mockup background and crops it tight.
-// Output: public/images/bbmc-logo.png (transparent) – used in the header/footer and as the photo watermark.
+// Output: public/img/bbmc-logo.png (transparent) – used in the header/footer and as the photo watermark.
 // Usage: node scripts/make-logo.mjs <path-to-original-logo.jpg>
 import sharp from "sharp";
 import path from "node:path";
@@ -35,6 +35,6 @@ const left = Math.max(0, minX - pad);
 const top = Math.max(0, minY - pad);
 const crop = { left, top, width: Math.min(width, maxX + pad) - left, height: Math.min(height, maxY + pad) - top };
 
-const out = path.resolve("public/images/bbmc-logo.png");
+const out = path.resolve("public/img/bbmc-logo.png");
 await sharp(data, { raw: { width, height, channels: 4 } }).extract(crop).png({ compressionLevel: 9 }).toFile(out);
 console.log("Logo cropped to", crop, "->", out);

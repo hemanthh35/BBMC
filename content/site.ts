@@ -13,7 +13,7 @@ export const site = {
     name: "Er. Paspunoori Srinivas Gupta",
     role: "Founder & Managing Director",
     subRole: "Principal Consultant, BBMC Balaji Benchmark Consultants",
-    image: "/images/er-paspunoori-srinivas-gupta-founder-bbmc.webp",
+    image: "/img/er-paspunoori-srinivas-gupta-founder-bbmc.webp",
   },
   phones: [
     { display: "+91 93910 36765", tel: "+919391036765" },
@@ -63,7 +63,7 @@ export const site = {
     { label: "BBMC Benchmark Constructions on LinkedIn", href: "https://in.linkedin.com/company/bbmc-benchmark-constructions-pvt-%C2%A0ltd", sameAs: false },
     { label: "BBMC Balaji Benchmark Constructions on Justdial", href: "https://www.justdial.com/Rangareddy/Bbmc-Balaji-Benchmark-Constructions-Pvt-Ltd-Near-Ambedkar-Statue-Adjacent-To-Lane-To-Universe-Bakery-Boduppal/040PXX40-XX40-230304143534-G3B5_BZDET", sameAs: false },
   ],
-  logo: "/images/bbmc-logo.png",
+  logo: "/img/bbmc-logo.png",
   // Original stat text kept: "30+ Years of Excellence", "Vaasthu Compliant Designs", "3000+ Happy Clients", "500+ Projects Delivered".
   stats: [
     { count: 30, suffix: "+", unit: "Years", label: "of Excellence" },
