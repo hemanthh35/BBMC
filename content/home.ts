@@ -92,19 +92,25 @@ export const testimonialsIntro = {
   text: "Read reviews from our satisfied clients who trusted us with their dream projects.",
 };
 
-// NOTE: the original source marks these as placeholders ("replace with real testimonials
-// from Google Reviews"). Replace with real reviews before launch. No Review schema is emitted for them.
+// Real reviews from BBMC's Justdial listing (short excerpts, linked to the full reviews).
+// Ratings checked 13 Nov 2026. Add more real reviews here as they come in.
+export const reviewsUrl =
+  "https://www.justdial.com/Rangareddy/Bbmc-Balaji-Benchmark-Consultants-Beside-Lane-To-Universe-Bakary-Nearambedhkar-Statue-Sri-Nagar-Colony-Boduppal/040PXX40-XX40-110122115547-F8N3_BZDET/reviews";
+
+export const ratings = [
+  { platform: "Google", rating: "5.0", count: 115, label: "Google reviews", href: "https://www.google.com/search?q=bbmc+consultants+boduppal" },
+  { platform: "Justdial", rating: "4.9", count: 136, label: "Justdial ratings", href: reviewsUrl },
+];
+
 export const testimonials = [
-  { name: "Rajesh K.", initials: "RK", rating: 5, source: "Google Review",
-    review: "Excellent architectural design and Vaasthu consultation. The team was very professional and understood our requirements perfectly. Highly recommended for anyone looking for quality construction services." },
-  { name: "Priya M.", initials: "PM", rating: 5, source: "Google Review",
-    review: "BBMC delivered our dream home exactly as we envisioned. Their attention to detail and commitment to Vaasthu principles is commendable. Great experience working with them." },
-  { name: "Suresh R.", initials: "SR", rating: 5, source: "Google Review",
-    review: "Professional team with over 30 years of experience. They helped us with structural planning and bank loan estimates. Very satisfied with their transparent approach." },
-  { name: "Anitha D.", initials: "AD", rating: 5, source: "Google Review",
-    review: "We got our commercial building designed by BBMC. The interior design suggestions were creative and practical. They completed the project on time with great quality." },
-  { name: "Venkat P.", initials: "VP", rating: 5, source: "Google Review",
-    review: "Best consultants in Hyderabad for Vaasthu-compliant designs. The team is knowledgeable and very client-friendly. Will definitely recommend to others." },
+  { name: "Sandeep", initials: "S", rating: 5, source: "Justdial review · Oct 2025",
+    review: "Their flexible appointment scheduling made it incredibly convenient for me." },
+  { name: "Rajkiran", initials: "R", rating: 5, source: "Justdial review · Oct 2025",
+    review: "The staff is friendly and very helpful. My problem was solved in no time!" },
+  { name: "Adarsh", initials: "A", rating: 5, source: "Justdial review · Celestial Biolab, Nacharam",
+    review: "I appreciate your architecture work… The building looking wonderful with your suggestible colors." },
+  { name: "Muthu", initials: "M", rating: 5, source: "Justdial review · Aug 2025",
+    review: "Quick service. Easily understandable quotation. Good service." },
 ];
 
 export const contactIntro = {

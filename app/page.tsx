@@ -7,7 +7,8 @@ import Contact from "@/components/Contact";
 import FaqList from "@/components/FaqList";
 import { AboutSection, FounderSection, ProcessSection, ServicesSection, WhyChooseSection } from "@/components/sections";
 import { ArrowLink, Container, SectionHeading } from "@/components/ui";
-import { contactIntro, homeFaqs, testimonialsIntro } from "@/content/home";
+import { contactIntro, homeFaqs, ratings, reviewsUrl, testimonialsIntro } from "@/content/home";
+import RatingBadges from "@/components/RatingBadges";
 import { hyderabadLocations, telanganaLocations, zoneLocations } from "@/content/locations";
 import Link from "next/link";
 
@@ -38,7 +39,13 @@ export default function Home() {
       <section id="testimonials" className="py-20 lg:py-28">
         <Container>
           <SectionHeading align="center" eyebrow={testimonialsIntro.eyebrow} title={testimonialsIntro.title} text={testimonialsIntro.text} />
+          <RatingBadges className="mt-8" />
           <div className="mt-14"><Testimonials /></div>
+          <p className="mt-10 text-center text-sm text-ink-60" data-reveal>
+            Read all reviews on{" "}
+            <a href={ratings[0].href} target="_blank" rel="noopener noreferrer" className="link-underline font-semibold text-brand-700">Google</a>{" "}and{" "}
+            <a href={reviewsUrl} target="_blank" rel="noopener noreferrer" className="link-underline font-semibold text-brand-700">Justdial</a>
+          </p>
         </Container>
       </section>
 
