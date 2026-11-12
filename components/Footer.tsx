@@ -103,6 +103,21 @@ export default function Footer() {
       </div>
 
       <div className="border-t border-white/10">
+        <div className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
+          <h2 className="text-sm font-semibold uppercase tracking-widest text-white/50">Find BBMC online</h2>
+          <ul className="mt-4 flex flex-wrap gap-x-5 gap-y-2 text-sm">
+            {site.listings.map((l) => (
+              <li key={l.href}>
+                <a href={l.href} target="_blank" rel="noopener noreferrer" className="link-underline text-white/75 hover:text-white">
+                  {l.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+
+      <div className="border-t border-white/10">
         <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-3 px-4 py-6 text-sm text-white/50 sm:flex-row sm:px-6 lg:px-8">
           <p>&copy; {new Date().getFullYear()} Balaji Benchmark Consultants (BBMC). All rights reserved.</p>
           <Link href="/privacy-policy" className="link-underline hover:text-white">Privacy Policy</Link>

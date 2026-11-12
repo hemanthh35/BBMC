@@ -51,6 +51,24 @@ export default function Contact() {
             </li>
           ))}
         </ul>
+
+        <div className="mt-8">
+          <h3 className="text-sm font-semibold uppercase tracking-widest text-ink-40">Find BBMC online</h3>
+          <ul className="mt-3 flex flex-wrap gap-2">
+            {site.listings.map((l) => (
+              <li key={l.href}>
+                <a
+                  href={l.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-block rounded-full border border-line px-3.5 py-1.5 text-sm text-ink-80 transition-colors duration-200 hover:border-brand-500 hover:text-brand-700"
+                >
+                  {l.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
       </div>
 
       <div data-reveal style={{ ["--reveal-delay" as string]: "120ms" }}>

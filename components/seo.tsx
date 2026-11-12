@@ -55,7 +55,7 @@ export function businessSchema() {
         itemOffered: { "@type": "Service", name: s.title, url: `${SITE_URL}/services/${s.slug}` },
       })),
     },
-    sameAs: [site.social.facebook, site.social.instagram, site.social.youtube, site.mapsUrl],
+    sameAs: site.listings.filter((l) => l.sameAs).map((l) => l.href),
   };
 }
 

@@ -48,9 +48,21 @@ export const site = {
   mapsEmbed: "https://www.google.com/maps/embed?origin=mfe&pb=!1m3!2m1!1s17.4175222,78.5851395!6i17",
   social: {
     facebook: "https://www.facebook.com/share/1BThqWfbeZ/",
-    instagram: "https://www.instagram.com/srinivasguptapaspunoori_bbmc/profile",
+    instagram: "https://www.instagram.com/srinivasguptapaspunoori_bbmc/",
     youtube: "https://www.youtube.com/@bbmcconsultants",
   },
+  // Where BBMC is listed online. `sameAs: true` = BBMC's own profile, added to the structured data Google reads.
+  listings: [
+    { label: "Google Maps", href: "https://maps.app.goo.gl/VeRk9wKnZJkvT1kF6", sameAs: true },
+    { label: "Justdial", href: "https://www.justdial.com/Rangareddy/Bbmc-Balaji-Benchmark-Consultants-Beside-Lane-To-Universe-Bakary-Nearambedhkar-Statue-Sri-Nagar-Colony-Boduppal/040PXX40-XX40-110122115547-F8N3_BZDET", sameAs: true },
+    { label: "Facebook", href: "https://www.facebook.com/share/1BThqWfbeZ/", sameAs: true },
+    { label: "Instagram", href: "https://www.instagram.com/srinivasguptapaspunoori_bbmc/", sameAs: true },
+    { label: "YouTube", href: "https://www.youtube.com/@bbmcconsultants", sameAs: true },
+    { label: "Wheree", href: "https://balaji-benchmark-consultants.wheree.com/", sameAs: true },
+    { label: "Glassy", href: "https://glassy.in/glass-business/balaji-benchmark-consultants-bbmc-architects-engineers-vaasthu-experts-interior-designers-and-builders-saraswati-nagar-colony/", sameAs: true },
+    { label: "BBMC Benchmark Constructions on LinkedIn", href: "https://in.linkedin.com/company/bbmc-benchmark-constructions-pvt-%C2%A0ltd", sameAs: false },
+    { label: "BBMC Balaji Benchmark Constructions on Justdial", href: "https://www.justdial.com/Rangareddy/Bbmc-Balaji-Benchmark-Constructions-Pvt-Ltd-Near-Ambedkar-Statue-Adjacent-To-Lane-To-Universe-Bakery-Boduppal/040PXX40-XX40-230304143534-G3B5_BZDET", sameAs: false },
+  ],
   logo: "/images/bbmc-logo.png",
   // Original stat text kept: "30+ Years of Excellence", "Vaasthu Compliant Designs", "3000+ Happy Clients", "500+ Projects Delivered".
   stats: [
