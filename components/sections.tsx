@@ -42,21 +42,31 @@ export function ServicesSection({ heading = true }: { heading?: boolean }) {
     <section id="services" className="bg-mist py-20 lg:py-28">
       <Container>
         {heading && <SectionHeading eyebrow={servicesIntro.eyebrow} title={servicesIntro.title} text={servicesIntro.text} />}
-        <ol className="mt-12 border-t border-line">
+        <ul className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {services.map((s, i) => (
-            <li key={s.slug} data-reveal style={{ ["--reveal-delay" as string]: `${(i % 4) * 60}ms` }}>
+            <li key={s.slug} data-reveal style={{ ["--reveal-delay" as string]: `${(i % 3) * 80}ms` }}>
               <Link
                 href={`/services/${s.slug}`}
-                className="group grid grid-cols-[2.5rem_1fr_auto] items-start gap-4 border-b border-line py-6 transition-colors duration-300 hover:bg-white sm:grid-cols-[3.5rem_minmax(0,22rem)_1fr_auto] sm:gap-6 sm:px-4"
+                className="lift zoom group flex h-full flex-col overflow-hidden rounded-xl border border-line bg-white hover:border-brand-200"
               >
-                <span className="font-display text-sm font-semibold text-brand-600">{String(i + 1).padStart(2, "0")}</span>
-                <h3 className="font-display text-lg font-semibold text-ink">{s.title}</h3>
-                <p className="col-span-2 col-start-2 text-ink-60 sm:col-span-1 sm:col-start-3">{s.short}</p>
-                <ArrowUpRight className="row-start-1 col-start-3 h-5 w-5 text-ink-40 transition-all duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-brand-600 sm:col-start-4" aria-hidden="true" />
+                <div className="relative aspect-[16/10] overflow-hidden bg-mist">
+                  <Image src={s.image} alt={s.imageAlt} fill sizes="(min-width:1024px) 33vw, (min-width:640px) 50vw, 100vw" className="object-cover" />
+                  <span className="absolute left-4 top-4 rounded-full bg-white/95 px-3 py-1 font-display text-xs font-semibold text-brand-700">
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
+                </div>
+                <div className="flex flex-1 flex-col p-6">
+                  <h3 className="font-display text-lg font-semibold text-ink transition-colors duration-200 group-hover:text-brand-700">{s.title}</h3>
+                  <p className="mt-2 flex-1 leading-relaxed text-ink-60">{s.short}</p>
+                  <span className="mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-brand-700">
+                    Learn more
+                    <ArrowUpRight className="h-4 w-4 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" aria-hidden="true" />
+                  </span>
+                </div>
               </Link>
             </li>
           ))}
-        </ol>
+        </ul>
       </Container>
     </section>
   );

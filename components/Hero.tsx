@@ -1,30 +1,20 @@
 "use client";
 
 import Image from "next/image";
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useState } from "react";
 import { ChevronLeft, ChevronRight, MessageCircle, Phone } from "lucide-react";
 import Link from "next/link";
 import { heroSlides } from "@/content/home";
 import { site, whatsappLink } from "@/content/site";
 import { WhatsAppIcon } from "./icons";
+import { useAutoplay } from "./useAutoplay";
 
 export default function Hero() {
   const [index, setIndex] = useState(0);
-  const [paused, setPaused] = useState(false);
-  const reduced = useRef(false);
   const total = heroSlides.length;
 
-  useEffect(() => {
-    reduced.current = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  }, []);
-
   const go = useCallback((i: number) => setIndex((i + total) % total), [total]);
-
-  useEffect(() => {
-    if (paused || reduced.current) return;
-    const t = setInterval(() => setIndex((i) => (i + 1) % total), 6000);
-    return () => clearInterval(t);
-  }, [paused, total]);
+  const { paused, handlers } = useAutoplay(index, () => setIndex((i) => (i + 1) % total), 5000);
 
   const slide = heroSlides[index];
 
@@ -33,10 +23,7 @@ export default function Hero() {
       className="relative isolate flex min-h-[88svh] items-end overflow-hidden bg-ink pt-18 text-white"
       aria-roledescription="carousel"
       aria-label="BBMC services"
-      onMouseEnter={() => setPaused(true)}
-      onMouseLeave={() => setPaused(false)}
-      onFocus={() => setPaused(true)}
-      onBlur={() => setPaused(false)}
+      {...handlers}
     >
       {heroSlides.map((s, i) => (
         <Image

@@ -261,8 +261,8 @@ export const services: Service[] = [
     metaDescription:
       "Builders and developers in Boduppal & Uppal, Hyderabad. Residential and commercial development from foundation to finish, with experienced teams since 1995.",
     h1: "Builders & Developers in Boduppal, Uppal – Hyderabad",
-    image: "/images/services/plot-development.webp",
-    imageAlt: "Residential development project by BBMC builders in Hyderabad",
+    image: "/images/projects/nvs-heights-tower.webp",
+    imageAlt: "NVS Heights residential tower developed by BBMC builders in Hyderabad",
     intro: [
       "As builders and developers, BBMC delivers complete residential and commercial projects, combining in-house architecture, engineering and Vaasthu expertise with experienced construction teams.",
       "Landowners and investors work with us for apartments, commercial complexes and mixed-use developments, from feasibility and design through to construction and completion.",
@@ -411,8 +411,8 @@ export const services: Service[] = [
     metaDescription:
       "Building permission drawings and approval guidance for GHMC, HMDA and municipal areas in Boduppal, Uppal & Hyderabad. BBMC architects and engineers.",
     h1: "Building Permission & Approval Drawings in Hyderabad",
-    image: "/images/services/architectural-design.webp",
-    imageAlt: "Building permission drawings prepared by BBMC architects",
+    image: "/images/projects/modern-apartment-complex.webp",
+    imageAlt: "Apartment complex with building permission drawings prepared by BBMC architects",
     intro: [
       "Building permission in Hyderabad is applied for online, and the approving authority depends on where your plot is: GHMC, HMDA or the local municipality.",
       "BBMC prepares permission drawings that follow setback and height rules for your plot and guides you through the documents and steps, so your application is complete the first time.",

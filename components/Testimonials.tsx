@@ -1,25 +1,16 @@
 "use client";
 
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useRef, useState } from "react";
 import { ChevronLeft, ChevronRight, Star } from "lucide-react";
 import { testimonials } from "@/content/home";
+import { useAutoplay } from "./useAutoplay";
 
 /** Accessible testimonial carousel: fade + slide, autoplay (pauses on hover/focus), arrows, dots, swipe. */
 export default function Testimonials() {
   const total = testimonials.length;
   const [index, setIndex] = useState(0);
   const [dir, setDir] = useState<1 | -1>(1);
-  const [paused, setPaused] = useState(false);
-  const [reduced, setReduced] = useState(false);
   const touchX = useRef<number | null>(null);
-
-  useEffect(() => {
-    const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
-    setReduced(mq.matches);
-    const on = () => setReduced(mq.matches);
-    mq.addEventListener("change", on);
-    return () => mq.removeEventListener("change", on);
-  }, []);
 
   const go = useCallback(
     (i: number, d: 1 | -1) => {
@@ -31,11 +22,7 @@ export default function Testimonials() {
   const next = useCallback(() => go(index + 1, 1), [go, index]);
   const prev = useCallback(() => go(index - 1, -1), [go, index]);
 
-  useEffect(() => {
-    if (paused || reduced) return;
-    const t = setTimeout(next, 6000);
-    return () => clearTimeout(t);
-  }, [paused, reduced, next]);
+  const { paused, handlers } = useAutoplay(index, () => go(index + 1, 1), 5000);
 
   const onKey = (e: React.KeyboardEvent) => {
     if (e.key === "ArrowRight") next();
@@ -48,10 +35,7 @@ export default function Testimonials() {
       role="region"
       aria-roledescription="carousel"
       aria-label="Client testimonials"
-      onMouseEnter={() => setPaused(true)}
-      onMouseLeave={() => setPaused(false)}
-      onFocusCapture={() => setPaused(true)}
-      onBlurCapture={() => setPaused(false)}
+      {...handlers}
       onKeyDown={onKey}
       onTouchStart={(e) => (touchX.current = e.touches[0].clientX)}
       onTouchEnd={(e) => {
