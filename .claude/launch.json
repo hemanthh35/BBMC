@@ -1,0 +1,1 @@
+{ "version": "0.0.1", "configurations": [ { "name": "bbmc-next", "runtimeExecutable": "npx", "runtimeArgs": ["next", "start", "-p", "3005"], "port": 3005 } ] }
