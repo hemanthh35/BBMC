@@ -425,12 +425,28 @@ const zones: Location[] = [
   ),
 ];
 
+// People search "builders in X", "architects near X", "construction company in X".
+// Titles and descriptions use those everyday words, shortened to fit Google's display.
+const withSearchWords = (l: Location): Location => {
+  const name = l.area.split(" (")[0];
+  return {
+    ...l,
+    seoTitle:
+      [
+        `Architects, Builders & Vastu Consultants in ${name} | BBMC`,
+        `Architects & Builders in ${name} | Vastu & Interiors | BBMC`,
+        `Architects & Builders in ${name} | BBMC`,
+      ].find((t) => t.length <= 62) ?? `Builders in ${name} | BBMC`,
+    metaDescription: `Builders, architects, structural engineers & vastu consultants in ${name}. House plans, construction, interiors & approvals by BBMC since 1995.`,
+  };
+};
+
 export const locations: Location[] = [
   ...zones,
   ...eastHyderabad.map((l) => ({ ...l, region: "Hyderabad" as const })),
   ...restOfHyderabad,
   ...telangana,
-];
+].map(withSearchWords);
 
 export const zoneLocations = zones;
 

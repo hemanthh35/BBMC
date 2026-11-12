@@ -31,11 +31,27 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 export default async function LocationPage({ params }: Props) {
   const l = getLocation((await params).location);
   if (!l) notFound();
+  const name = l.area.split(" (")[0];
+  const searches: [string, string][] = [
+    [`Builders in ${name}`, "builders-developers"],
+    [`Construction company in ${name}`, "construction-renovation"],
+    [`House construction contractors near ${name}`, "construction-renovation"],
+    [`Architects in ${name}`, "architectural-design"],
+    [`House plans in ${name}`, "architectural-design"],
+    [`Vastu consultant in ${name}`, "vastu-consultation"],
+    [`Interior designers in ${name}`, "interior-design"],
+    [`Structural engineer in ${name}`, "structural-engineering"],
+    [`Site engineers & supervision in ${name}`, "construction-renovation"],
+    [`3D elevation design in ${name}`, "building-elevation-design"],
+    [`Building permission in ${name}`, "building-permission-approvals"],
+    [`Bank loan estimate in ${name}`, "estimates-valuations"],
+    [`Land surveyors in ${name}`, "land-surveying-plot-development"],
+  ];
   const nearby = locations.filter((x) => x.slug !== l.slug && l.nearby.includes(x.area));
 
   return (
     <>
-      <PageHero crumbs={[{ name: "Locations", href: "/locations" }, { name: l.area, href: `/${l.slug}` }]} eyebrow={l.areas ? `${l.areas.length} neighbourhoods covered` : `Serving ${l.area}, ${l.region ?? "Hyderabad"}`} title={`Architects, Engineers & Vastu Consultants in ${l.area}`}>
+      <PageHero crumbs={[{ name: "Locations", href: "/locations" }, { name: l.area, href: `/${l.slug}` }]} eyebrow={l.areas ? `${l.areas.length} neighbourhoods covered` : `Serving ${l.area}, ${l.region ?? "Hyderabad"}`} title={`Architects, Builders & Vastu Consultants in ${l.area}`}>
         <p>{site.roles}</p>
         <div className="mt-8 flex flex-col gap-3 sm:flex-row">
           <CallButton />
@@ -98,6 +114,24 @@ export default async function LocationPage({ params }: Props) {
                 <Link href={`/services/${s.slug}`} className="group block border-b border-line py-4">
                   <span className="font-display font-semibold text-ink transition-colors group-hover:text-brand-700">{s.title}</span>
                   <span className="mt-1 block text-sm text-ink-60">{s.short}</span>
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </Container>
+      </section>
+
+      <section className="py-16 lg:py-20">
+        <Container>
+          <h2 className="text-2xl font-bold text-ink sm:text-3xl" data-reveal>Popular searches in {name}</h2>
+          <p className="mt-3 max-w-2xl text-ink-60" data-reveal>
+            Looking for builders, architects or a construction company near {name}? BBMC covers all of these from one team.
+          </p>
+          <ul className="mt-6 flex flex-wrap gap-2" data-reveal>
+            {searches.map(([label, slug]) => (
+              <li key={label}>
+                <Link href={`/services/${slug}`} className="inline-block rounded-full border border-line px-4 py-2 text-sm text-ink-80 transition-colors duration-200 hover:border-brand-500 hover:text-brand-700">
+                  {label}
                 </Link>
               </li>
             ))}

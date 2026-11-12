@@ -14,11 +14,11 @@ const montserrat = Montserrat({ subsets: ["latin"], variable: "--font-montserrat
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: "Architects & Vastu Consultants in Hyderabad, Telangana | BBMC",
+    default: "Architects, Builders & Vastu Consultants in Hyderabad | BBMC",
     template: "%s",
   },
   description:
-    "BBMC, since 1995: architects, structural engineers, interior designers and vastu consultants in Hyderabad & Telangana. 500+ projects. Free consultation.",
+    "BBMC, since 1995: builders, architects, structural engineers, interior designers & vastu consultants in Hyderabad & Telangana. 500+ projects.",
   applicationName: "BBMC – Balaji Benchmark Consultants",
   authors: [{ name: "Balaji Benchmark Consultants (BBMC)" }],
   openGraph: {

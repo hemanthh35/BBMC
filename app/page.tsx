@@ -12,7 +12,7 @@ import { hyderabadLocations, telanganaLocations, zoneLocations } from "@/content
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Architects & Vastu Consultants in Hyderabad, Telangana | BBMC",
+  title: "Architects, Builders & Vastu Consultants in Hyderabad | BBMC",
   alternates: { canonical: "/" },
   openGraph: { url: "/", images: [defaultOgImage] },
 };
