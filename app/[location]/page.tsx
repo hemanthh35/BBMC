@@ -119,7 +119,7 @@ export default async function LocationPage({ params }: Props) {
             Design, engineering, Vaasthu, interiors and construction from one trusted team, serving {name} since 1995.
           </p>
           <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-            <a href={`tel:${site.phones[0].tel}`} className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-brand-500 px-7 font-semibold text-white transition-colors duration-200 hover:bg-brand-600">
+            <a href={`tel:${site.phones[0].tel}`} className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-brand-700 px-7 font-semibold text-white transition-colors duration-200 hover:bg-brand-800">
               <Phone className="h-5 w-5" aria-hidden="true" /> Call Now
             </a>
             <a href={whatsappLink(`Hi BBMC, I have a project in ${name}.`)} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-white/40 px-7 font-semibold text-white transition-colors duration-200 hover:bg-white hover:text-ink">

@@ -64,7 +64,7 @@ export default function Header() {
         <div className="flex items-center gap-2">
           <a
             href={`tel:${site.phones[0].tel}`}
-            className="hidden items-center gap-2 rounded-full bg-brand-500 px-4 py-2.5 text-sm font-semibold text-white transition-colors duration-200 hover:bg-brand-600 sm:inline-flex"
+            className="hidden items-center gap-2 rounded-full bg-brand-700 px-4 py-2.5 text-sm font-semibold text-white transition-colors duration-200 hover:bg-brand-800 sm:inline-flex"
           >
             <Phone className="h-4 w-4" aria-hidden="true" />
             <span className="hidden md:inline">{site.phones[0].display}</span>
@@ -106,7 +106,7 @@ export default function Header() {
           </ul>
           <a
             href={`tel:${site.phones[0].tel}`}
-            className="mt-3 flex items-center justify-center gap-2 rounded-full bg-brand-500 px-4 py-3 font-semibold text-white"
+            className="mt-3 flex items-center justify-center gap-2 rounded-full bg-brand-700 px-4 py-3 font-semibold text-white"
           >
             <Phone className="h-4 w-4" aria-hidden="true" /> Call Now
           </a>

@@ -52,7 +52,8 @@ export default function Portfolio({ showAll = false }: { showAll?: boolean }) {
         </div>
       </div>
 
-      <ul id="portfolio-panel" role="tabpanel" className="mt-10 grid gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3">
+      <div id="portfolio-panel" role="tabpanel" className="mt-10">
+      <ul className="grid gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3">
         {visible.map((item, i) => (
           <li key={item.slug} className="animate-fade-up" style={{ animationDelay: `${i * 60}ms` }}>
             <figure className="zoom group">
@@ -77,6 +78,7 @@ export default function Portfolio({ showAll = false }: { showAll?: boolean }) {
           </li>
         ))}
       </ul>
+      </div>
 
       {open !== null && <Lightbox items={items} index={open} onChange={setOpen} onClose={() => setOpen(null)} />}
 

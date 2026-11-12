@@ -50,7 +50,7 @@ export default function Testimonials() {
         {testimonials.map((t, i) => {
           const active = i === index;
           return (
-            <figure
+            <div
               key={t.name}
               role="group"
               aria-roledescription="slide"
@@ -63,7 +63,8 @@ export default function Testimonials() {
                 visibility: active ? "visible" : "hidden",
               }}
             >
-              <div className="flex justify-center gap-1 text-brand-500" aria-label={`${t.rating} out of 5 stars`}>
+            <figure>
+              <div className="flex justify-center gap-1 text-brand-500" role="img" aria-label={`${t.rating} out of 5 stars`}>
                 {Array.from({ length: t.rating }).map((_, s) => (
                   <Star key={s} className="h-5 w-5 fill-current" aria-hidden="true" />
                 ))}
@@ -81,12 +82,13 @@ export default function Testimonials() {
                 </span>
               </figcaption>
             </figure>
+            </div>
           );
         })}
       </div>
 
       <div className="mt-10 flex items-center justify-center gap-5">
-        <button type="button" onClick={prev} aria-label="Previous testimonial" className="flex h-11 w-11 items-center justify-center rounded-full border border-line text-ink transition-colors duration-200 hover:border-brand-500 hover:bg-brand-500 hover:text-white">
+        <button type="button" onClick={prev} aria-label="Previous testimonial" className="flex h-11 w-11 items-center justify-center rounded-full border border-line text-ink transition-colors duration-200 hover:border-brand-700 hover:bg-brand-700 hover:text-white">
           <ChevronLeft className="h-5 w-5" />
         </button>
         <div className="flex" role="group" aria-label="Choose testimonial">
@@ -103,7 +105,7 @@ export default function Testimonials() {
             </button>
           ))}
         </div>
-        <button type="button" onClick={next} aria-label="Next testimonial" className="flex h-11 w-11 items-center justify-center rounded-full border border-line text-ink transition-colors duration-200 hover:border-brand-500 hover:bg-brand-500 hover:text-white">
+        <button type="button" onClick={next} aria-label="Next testimonial" className="flex h-11 w-11 items-center justify-center rounded-full border border-line text-ink transition-colors duration-200 hover:border-brand-700 hover:bg-brand-700 hover:text-white">
           <ChevronRight className="h-5 w-5" />
         </button>
       </div>

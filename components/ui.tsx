@@ -40,7 +40,7 @@ export function CallButton({ className = "", label = "Call Now" }: { className?:
   return (
     <a
       href={`tel:${site.phones[0].tel}`}
-      className={`inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-brand-500 px-7 font-semibold text-white transition-colors duration-200 hover:bg-brand-600 ${className}`}
+      className={`inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-brand-700 px-7 font-semibold text-white transition-colors duration-200 hover:bg-brand-800 ${className}`}
     >
       <Phone className="h-5 w-5" aria-hidden="true" />
       {label}

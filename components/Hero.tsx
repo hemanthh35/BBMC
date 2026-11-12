@@ -56,7 +56,7 @@ export default function Hero() {
         </div>
 
         <div className="mt-10 grid grid-cols-2 gap-3 sm:flex sm:flex-row">
-          <a href={`tel:${site.phones[0].tel}`} className="col-span-2 inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-brand-500 px-7 font-semibold text-white transition-colors duration-200 hover:bg-brand-600">
+          <a href={`tel:${site.phones[0].tel}`} className="col-span-2 inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-brand-700 px-7 font-semibold text-white transition-colors duration-200 hover:bg-brand-800">
             <Phone className="h-5 w-5" aria-hidden="true" /> Call Now
           </a>
           <Link href="/#contact" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-white/40 px-3 text-sm font-semibold text-white transition-colors duration-200 hover:bg-white hover:text-ink sm:px-7 sm:text-base">

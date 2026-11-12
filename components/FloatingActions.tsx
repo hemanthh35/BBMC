@@ -20,7 +20,7 @@ export default function FloatingActions() {
         <a href={`tel:${site.phones[0].tel}`} className="flex min-h-14 items-center justify-center gap-2 font-semibold text-ink">
           <Phone className="h-5 w-5 text-brand-600" aria-hidden="true" /> Call
         </a>
-        <a href={whatsappLink()} target="_blank" rel="noopener noreferrer" className="flex min-h-14 items-center justify-center gap-2 bg-[#25D366] font-semibold text-white">
+        <a href={whatsappLink()} target="_blank" rel="noopener noreferrer" className="flex min-h-14 items-center justify-center gap-2 bg-[#25D366] font-semibold text-ink">
           <WhatsAppIcon className="h-5 w-5" /> WhatsApp
         </a>
       </div>
