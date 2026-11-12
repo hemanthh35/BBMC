@@ -5,7 +5,7 @@ import Footer from "@/components/Footer";
 import FloatingActions from "@/components/FloatingActions";
 import RevealObserver from "@/components/RevealObserver";
 import { JsonLd, businessSchema, websiteSchema } from "@/components/seo";
-import { SITE_URL } from "@/content/site";
+import { SITE_URL, defaultOgImage } from "@/content/site";
 import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter", display: "swap" });
@@ -25,6 +25,7 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_IN",
     siteName: "BBMC – Balaji Benchmark Consultants",
+    images: [defaultOgImage],
   },
   twitter: { card: "summary_large_image" },
   robots: { index: true, follow: true, googleBot: { index: true, follow: true, "max-image-preview": "large" } },

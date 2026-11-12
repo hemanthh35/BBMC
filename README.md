@@ -7,8 +7,17 @@ Next.js 16 rebuild of the BBMC site, built for local SEO in Boduppal, Uppal and 
 ```bash
 npm install
 npm run dev        # http://localhost:3000
-npm run build && npm start
+npm run build      # static export to ./out
+npm start          # serve ./out locally
 ```
+
+## Deploy (Render Static Site)
+
+| Setting | Value |
+|---|---|
+| Root directory | *(empty)* |
+| Build command | `npm install; npm run build` |
+| Publish directory | `out` |
 
 ## Configure
 

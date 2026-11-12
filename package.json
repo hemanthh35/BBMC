@@ -4,8 +4,8 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
+    "build": "next build && node scripts/postbuild.mjs",
+    "start": "npx --yes serve out",
     "lint": "tsc --noEmit",
     "images": "node scripts/optimize-images.mjs",
     "audit": "node scripts/seo-audit.mjs http://localhost:3000"
