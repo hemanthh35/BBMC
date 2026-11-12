@@ -19,7 +19,7 @@ export const socialLinks = [
   { label: "Facebook", href: site.social.facebook, Icon: FacebookIcon },
   { label: "Instagram", href: site.social.instagram, Icon: InstagramIcon },
   { label: "YouTube", href: site.social.youtube, Icon: YoutubeIcon },
-  { label: "Google Maps", href: site.mapsUrl, Icon: GoogleIcon },
+  { label: "BBMC on Google", href: site.googleSearch, Icon: GoogleIcon },
 ];
 
 export default function Footer() {
