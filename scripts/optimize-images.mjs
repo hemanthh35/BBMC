@@ -99,7 +99,7 @@ for (const [file, [name, width]] of Object.entries(map)) {
   const resized = await base.resize({ width, withoutEnlargement: true }).toBuffer({ resolveWithObject: true });
   let img = sharp(resized.data);
   if (isPhoto(name)) img = img.composite(await watermark(resized.info.width, resized.info.height));
-  await img.webp({ quality: 78 }).toFile(output);
+  await img.sharpen({ sigma: 0.6 }).webp({ quality: 90, effort: 6, smartSubsample: true }).toFile(output);
   after += (await stat(output)).size;
 }
 

@@ -33,7 +33,7 @@ export default function Header() {
       </a>
       <div className="mx-auto flex h-18 max-w-7xl items-center justify-between gap-4 px-4 sm:px-6 lg:px-8">
         <Link href="/" className="flex shrink-0 items-center gap-3" aria-label="BBMC – Balaji Benchmark Consultants, home">
-          <Image src={site.logo} alt="BBMC Logo" width={896} height={670} priority sizes="80px" className="h-13 w-auto" />
+          <Image quality={90} src={site.logo} alt="BBMC Logo" width={896} height={670} priority sizes="80px" className="h-13 w-auto" />
           <span className="hidden font-display text-sm font-semibold leading-tight text-ink xl:block">
             Balaji Benchmark
             <br />

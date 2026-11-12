@@ -25,7 +25,7 @@ export default function BlogPage() {
               <li key={p.slug} data-reveal>
                 <Link href={`/blog/${p.slug}`} className="zoom group block">
                   <div className="relative aspect-[16/10] overflow-hidden rounded-lg bg-mist">
-                    <Image src={p.image} alt="" fill sizes="(min-width:1024px) 33vw, (min-width:768px) 50vw, 100vw" className="object-cover" />
+                    <Image quality={90} src={p.image} alt="" fill sizes="(min-width:1024px) 33vw, (min-width:768px) 50vw, 100vw" className="object-cover" />
                   </div>
                   <time dateTime={p.date} className="mt-5 block text-sm text-ink-40">
                     {new Date(p.date).toLocaleDateString("en-IN", { day: "numeric", month: "long", year: "numeric" })}

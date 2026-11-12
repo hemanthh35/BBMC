@@ -52,7 +52,7 @@ export default async function ServicePage({ params }: Props) {
           </div>
           <div className="lg:col-span-5" data-reveal>
             <div className="zoom relative aspect-[4/3] overflow-hidden rounded-lg bg-mist">
-              <Image src={s.image} alt={s.imageAlt} fill priority sizes="(min-width:1024px) 40vw, 100vw" className="object-cover" />
+              <Image quality={90} src={s.image} alt={s.imageAlt} fill priority sizes="(min-width:1024px) 40vw, 100vw" className="object-cover" />
             </div>
           </div>
         </Container>

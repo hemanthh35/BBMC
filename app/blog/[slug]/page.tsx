@@ -41,7 +41,7 @@ export default async function PostPage({ params }: Props) {
       <article className="py-16 lg:py-20">
         <Container className="max-w-3xl">
           <div className="relative mb-12 aspect-[16/9] overflow-hidden rounded-lg bg-mist">
-            <Image src={p.image} alt={p.title} fill priority sizes="(min-width:768px) 48rem, 100vw" className="object-cover" />
+            <Image quality={90} src={p.image} alt={p.title} fill priority sizes="(min-width:768px) 48rem, 100vw" className="object-cover" />
           </div>
           <div className="prose prose-lg max-w-none prose-headings:font-display prose-headings:text-ink prose-p:text-ink-80 prose-li:text-ink-80 prose-li:marker:text-brand-600">
             {p.sections.map((s) => (

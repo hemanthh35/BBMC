@@ -53,7 +53,7 @@ export function ServicesSection({ heading = true }: { heading?: boolean }) {
                 className="lift zoom group flex h-full flex-col overflow-hidden rounded-xl border border-line bg-white hover:border-brand-200"
               >
                 <div className="relative aspect-[16/10] overflow-hidden bg-mist">
-                  <Image src={s.image} alt={s.imageAlt} fill sizes="(min-width:1024px) 33vw, (min-width:640px) 50vw, 100vw" className="object-cover" />
+                  <Image quality={90} src={s.image} alt={s.imageAlt} fill sizes="(min-width:1024px) 33vw, (min-width:640px) 50vw, 100vw" className="object-cover" />
                   <span className="absolute left-4 top-4 rounded-full bg-white/95 px-3 py-1 font-display text-xs font-semibold text-brand-700">
                     {String(i + 1).padStart(2, "0")}
                   </span>
@@ -110,7 +110,7 @@ export function FounderSection() {
         <div className="mt-12 grid items-start gap-12 lg:grid-cols-12">
           <figure className="lg:col-span-5" data-reveal>
             <div className="zoom relative aspect-[617/900] max-w-md overflow-hidden rounded-lg bg-white">
-              <Image src={site.founder.image} alt="Er. Paspunoori Srinivas Gupta - Founder & MD of BBMC" fill sizes="(min-width:1024px) 28rem, 100vw" className="object-cover" />
+              <Image quality={90} src={site.founder.image} alt="Er. Paspunoori Srinivas Gupta - Founder & MD of BBMC" fill sizes="(min-width:1024px) 28rem, 100vw" className="object-cover" />
             </div>
             <figcaption className="mt-5">
               <h3 className="font-display text-xl font-bold text-ink">{site.founder.name}</h3>

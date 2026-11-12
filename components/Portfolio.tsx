@@ -55,7 +55,7 @@ export default function Portfolio({ showAll = false }: { showAll?: boolean }) {
           <li key={item.slug} className="animate-fade-up" style={{ animationDelay: `${i * 60}ms` }}>
             <figure className="zoom group">
               <div className="relative aspect-[4/3] overflow-hidden rounded-lg bg-mist">
-                <Image src={item.image} alt={item.alt} fill sizes="(min-width:1024px) 33vw, (min-width:640px) 50vw, 100vw" className="object-cover" />
+                <Image quality={90} src={item.image} alt={item.alt} fill sizes="(min-width:1024px) 33vw, (min-width:640px) 50vw, 100vw" className="object-cover" />
               </div>
               <figcaption className="mt-4 flex items-baseline justify-between gap-3 border-b border-line pb-3">
                 <span className="font-display font-semibold text-ink">{item.title}</span>
