@@ -27,7 +27,7 @@ export const services: Service[] = [
     metaDescription:
       "Residential and commercial architects in Hyderabad & Telangana. Vastu-compliant house plans, duplex, G+1, G+2 and villa designs by BBMC since 1995.",
     h1: "Architectural Design & House Plans in Hyderabad & Telangana",
-    image: "/images/services/architectural-design.webp",
+    image: "/images/projects/twin-storey-residence.webp",
     imageAlt: "Architect at BBMC preparing a vastu-compliant house plan in Hyderabad",
     intro: [
       "BBMC has been designing homes, apartments, commercial complexes and institutional buildings across Hyderabad since 1995. Every plan starts with your plot, your budget and the way your family or business actually uses space, and is then refined for light, ventilation, structure and Vaasthu.",
@@ -122,7 +122,7 @@ export const services: Service[] = [
     metaDescription:
       "Home, office, restaurant and cafe interior designers in Hyderabad & Telangana. Modular kitchens, living rooms, bedrooms and space planning by BBMC.",
     h1: "Interior Designers in Hyderabad & Telangana",
-    image: "/images/services/interior-design.webp",
+    image: "/images/interiors/luxury-living-room.webp",
     imageAlt: "Modern living room interior designed by BBMC in Hyderabad",
     intro: [
       "Our interior team plans spaces that look good and work well every day. From a 2BHK flat to a villa, a cafe or a corporate office, we combine layout, materials, lighting and storage into one clear design.",
@@ -168,7 +168,7 @@ export const services: Service[] = [
     metaDescription:
       "Experienced vastu (Vaasthu) consultant in Hyderabad & Telangana. Vastu for plots, homes, offices and shops, plus vastu correction without demolition.",
     h1: "Vastu Consultant in Hyderabad & Telangana",
-    image: "/images/services/vastu-consultation.webp",
+    image: "/images/interiors/pooja-room.webp",
     imageAlt: "BBMC vastu consultant reviewing a house plan with clients in Hyderabad",
     intro: [
       "Vastu (also written Vaasthu) is at the heart of every BBMC design. With over 30 years of combined architectural and Vaasthu experience, Er. Paspunoori Srinivas Gupta and the BBMC team help families and businesses plan spaces that are both practical and in harmony with traditional principles.",
@@ -300,7 +300,7 @@ export const services: Service[] = [
     metaDescription:
       "Bank-approved construction estimates and property valuations across Hyderabad & Telangana for home loans and project financing. BBMC since 1995.",
     h1: "Bank Loan Estimates & Property Valuations in Hyderabad",
-    image: "/images/services/architects-hyderabad-hero.webp",
+    image: "/images/projects/contemporary-residence-hyderabad.webp",
     imageAlt: "Building estimate and valuation documents prepared by BBMC",
     intro: [
       "Most banks need a professional construction estimate before sanctioning a home or construction loan. BBMC prepares clear, bank-approved estimates and property valuations to help secure your project financing.",
@@ -337,7 +337,7 @@ export const services: Service[] = [
     metaDescription:
       "Land surveyors and plot development planning across Hyderabad & Telangana. Accurate measurement, layout planning and plot development by BBMC.",
     h1: "Land Surveying & Plot Development in Hyderabad",
-    image: "/images/services/plot-development.webp",
+    image: "/images/projects/balaji-benchmark-enclave.webp",
     imageAlt: "Plot development and layout planning by BBMC in Hyderabad",
     intro: [
       "Accurate measurements are the foundation of every good project. BBMC surveys plots and land, marks boundaries and prepares layouts so that design and construction start on solid ground.",
@@ -374,7 +374,7 @@ export const services: Service[] = [
     metaDescription:
       "Front elevation and 3D building elevation designers in Hyderabad & Telangana. Modern, contemporary and classic elevations for houses and buildings.",
     h1: "Building Elevation & 3D Front Elevation Design in Hyderabad",
-    image: "/images/projects/premium-duplex-villa.webp",
+    image: "/images/projects/modern-house-elevation.webp",
     imageAlt: "Premium duplex villa front elevation designed by BBMC",
     intro: [
       "The elevation is the first thing anyone sees. BBMC designs front elevations that suit your plan, budget and taste: modern, contemporary, minimalist or classic.",

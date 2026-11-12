@@ -2,13 +2,13 @@
 
 export const heroSlides = [
   {
-    image: "/images/services/architects-hyderabad-hero.webp",
+    image: "/images/projects/bommak-narsimha-convention-hall.webp",
     title: "Designing Dreams. Building Excellence.",
     subtitle:
       "Professional Architects, Engineers, Interior Designers, Vaasthu Experts, and Builders with 30+ Years of Excellence",
   },
   {
-    image: "/images/services/architectural-design.webp",
+    image: "/images/projects/twin-storey-residence.webp",
     title: "Expert Architects",
     subtitle: "Innovative architectural designs that blend creativity with functionality for your dream spaces",
   },
@@ -18,12 +18,12 @@ export const heroSlides = [
     subtitle: "Structural engineering excellence ensuring safety, durability, and precision in every project",
   },
   {
-    image: "/images/services/vastu-consultation.webp",
+    image: "/images/interiors/pooja-room.webp",
     title: "Vaasthu Consultants",
     subtitle: "Traditional Vaasthu-compliant designs bringing harmony, prosperity, and positive energy to your space",
   },
   {
-    image: "/images/services/interior-design.webp",
+    image: "/images/interiors/luxury-living-room.webp",
     title: "Interior Designers",
     subtitle: "Transform your spaces with elegant interiors that reflect your style and personality",
   },
@@ -33,7 +33,7 @@ export const heroSlides = [
     subtitle: "Quality construction from foundation to finish with attention to every detail",
   },
   {
-    image: "/images/services/plot-development.webp",
+    image: "/images/projects/balaji-benchmark-enclave.webp",
     title: "Property Developers",
     subtitle: "Complete real estate development solutions for residential and commercial projects",
   },
@@ -134,35 +134,38 @@ const p = (slug: string, title: string, kind: "Architecture" | "Interior") => ({
 });
 
 export const projects = [
-  p("commercial-complex-with-retail", "Commercial Complex with Retail", "Architecture"),
-  p("minimalist-residential-building", "Minimalist Residential Building", "Architecture"),
-  p("contemporary-luxury-villa", "Contemporary Luxury Villa", "Architecture"),
-  p("modern-apartment-complex", "Modern Apartment Complex", "Architecture"),
-  p("mixed-use-commercial-building", "Mixed-Use Commercial Building", "Architecture"),
+  p("contemporary-residence-hyderabad", "Contemporary Residence, Hyderabad", "Architecture"),
+  p("bommak-narsimha-convention-hall", "Bommak Narsimha Convention Hall", "Architecture"),
+  p("modern-house-elevation", "Modern House Elevation", "Architecture"),
+  p("bommaku-arcade-commercial-building", "Bommaku Arcade Commercial Building", "Architecture"),
+  p("twin-storey-residence", "Twin-Storey Residence", "Architecture"),
+  p("balaji-benchmark-enclave", "BBMC Balaji Benchmark Enclave", "Architecture"),
+  p("contemporary-duplex-house", "Contemporary Duplex House", "Architecture"),
   p("nvs-heights-tower", "NVS Heights Tower", "Architecture"),
-  p("retail-residential-complex", "Retail & Residential Complex", "Architecture"),
-  p("convention-hall", "Convention Hall", "Architecture"),
-  p("corporate-office-building", "Corporate Office Building", "Architecture"),
-  p("designer-apartment-complex", "Designer Apartment Complex", "Architecture"),
   p("pareeksha-residential-tower", "Pareeksha Residential Tower", "Architecture"),
+  p("contemporary-luxury-villa", "Contemporary Luxury Villa", "Architecture"),
   p("premium-duplex-villa", "Premium Duplex Villa", "Architecture"),
+  p("commercial-complex-with-retail", "Commercial Complex with Retail", "Architecture"),
 ];
 
 export const interiors = [
-  p("elegant-dining-room", "Elegant Dining Room", "Interior"),
-  p("modern-living-room", "Modern Living Room", "Interior"),
+  p("luxury-living-room", "Luxury Living Room", "Interior"),
+  p("living-room-wooden-ceiling", "Living Room with Wooden Ceiling", "Interior"),
+  p("modular-kitchen", "Modular Kitchen", "Interior"),
+  p("island-kitchen", "Island Kitchen", "Interior"),
+  p("master-bedroom", "Master Bedroom", "Interior"),
+  p("designer-wardrobe", "Designer Wardrobe", "Interior"),
+  p("pooja-room", "Pooja Room", "Interior"),
+  p("contemporary-living-room", "Contemporary Living Room", "Interior"),
+  p("teal-accent-bedroom", "Teal Accent Bedroom", "Interior"),
+  p("botanical-wardrobe", "Botanical Wardrobe", "Interior"),
+  p("open-living-and-dining", "Open Living & Dining", "Interior"),
+  p("bedroom-with-study", "Bedroom with Study", "Interior"),
+  p("salon-interior", "Salon Interior", "Interior"),
   p("urban-coffee-cafe", "Urban Coffee Cafe", "Interior"),
   p("industrial-restaurant-design", "Industrial Restaurant Design", "Interior"),
-  p("luxury-open-living-space", "Luxury Open Living Space", "Interior"),
-  p("premium-living-with-fireplace", "Premium Living with Fireplace", "Interior"),
-  p("dark-luxury-kitchen", "Dark Luxury Kitchen", "Interior"),
-  p("modern-modular-kitchen", "Modern Modular Kitchen", "Interior"),
   p("rooftop-terrace-lounge", "Rooftop Terrace Lounge", "Interior"),
-  p("contemporary-bathroom", "Contemporary Bathroom", "Interior"),
-  p("luxury-canopy-bedroom", "Luxury Canopy Bedroom", "Interior"),
   p("designer-staircase", "Designer Staircase", "Interior"),
-  p("minimalist-master-bedroom", "Minimalist Master Bedroom", "Interior"),
-  p("upscale-dining-experience", "Upscale Dining Experience", "Interior"),
   p("grand-foyer-design", "Grand Foyer Design", "Interior"),
 ];
 
