@@ -14,7 +14,7 @@ export const posts: Post[] = [
     description:
       "Where to place the main door, kitchen, master bedroom and puja room in an east-facing house, explained simply by BBMC's Vaasthu consultants in Hyderabad.",
     date: "2026-11-13",
-    image: "/images/interiors/pooja-room.webp",
+    image: "/images/services/vastu-consultation.webp",
     sections: [
       {
         heading: "Why east-facing houses are popular",
@@ -55,7 +55,7 @@ export const posts: Post[] = [
     description:
       "An overview of the building permission process in Hyderabad: which authority applies, the documents you typically need, and how architects help.",
     date: "2026-11-13",
-    image: "/images/projects/modern-house-elevation.webp",
+    image: "/images/services/architectural-design.webp",
     sections: [
       {
         heading: "Which authority approves your plan?",

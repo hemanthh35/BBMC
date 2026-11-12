@@ -23,7 +23,7 @@ Copy `.env.example` to `.env.local` and set `NEXT_PUBLIC_SITE_URL` to the live d
 | Service pages | `content/services.ts` |
 | Area pages (Boduppal, Uppal, …) | `content/locations.ts` |
 | Blog posts | `content/blog.ts` |
-| Images (WebP) | `public/images/`. Justdial photos: `node scripts/process-justdial.mjs <folder>`; older renders: `npm run images -- <folder>` |
+| Images (WebP) | `public/images/` (regenerate with `npm run images -- <path-to-originals>`) |
 
 ## Before launch
 
