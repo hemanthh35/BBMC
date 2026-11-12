@@ -6,7 +6,7 @@ import PageHero from "@/components/PageHero";
 import FaqList from "@/components/FaqList";
 import Portfolio from "@/components/Portfolio";
 import { CallButton, Container, CtaBand, WhatsAppButton } from "@/components/ui";
-import { getLocation, locations } from "@/content/locations";
+import { areaHref, getLocation, locations } from "@/content/locations";
 import { services } from "@/content/services";
 import { site } from "@/content/site";
 
@@ -35,7 +35,7 @@ export default async function LocationPage({ params }: Props) {
 
   return (
     <>
-      <PageHero crumbs={[{ name: "Locations", href: "/locations" }, { name: l.area, href: `/${l.slug}` }]} eyebrow={`Serving ${l.area}, ${l.region ?? "Hyderabad"}`} title={`Architects, Engineers & Vastu Consultants in ${l.area}`}>
+      <PageHero crumbs={[{ name: "Locations", href: "/locations" }, { name: l.area, href: `/${l.slug}` }]} eyebrow={l.areas ? `${l.areas.length} neighbourhoods covered` : `Serving ${l.area}, ${l.region ?? "Hyderabad"}`} title={`Architects, Engineers & Vastu Consultants in ${l.area}`}>
         <p>{site.roles}</p>
         <div className="mt-8 flex flex-col gap-3 sm:flex-row">
           <CallButton />
@@ -63,6 +63,31 @@ export default async function LocationPage({ params }: Props) {
           </aside>
         </Container>
       </section>
+
+      {l.areas && (
+        <section className="border-t border-line py-20 lg:py-24">
+          <Container>
+            <h2 className="text-2xl font-bold text-ink sm:text-3xl" data-reveal>Areas we cover in {l.area}</h2>
+            <ul className="mt-8 flex flex-wrap gap-2" data-reveal>
+              {l.areas.map((a) => {
+                const href = areaHref(a, l.slug);
+                const own = href !== `/${l.slug}`;
+                return (
+                  <li key={a}>
+                    {own ? (
+                      <Link href={href} className="inline-block rounded-full border border-brand-200 bg-brand-50 px-4 py-2 text-sm font-medium text-brand-700 transition-colors duration-200 hover:border-brand-500">
+                        {a}
+                      </Link>
+                    ) : (
+                      <span className="inline-block rounded-full border border-line px-4 py-2 text-sm text-ink-80">{a}</span>
+                    )}
+                  </li>
+                );
+              })}
+            </ul>
+          </Container>
+        </section>
+      )}
 
       <section className="bg-mist py-20 lg:py-24">
         <Container>

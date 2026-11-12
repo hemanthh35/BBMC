@@ -10,6 +10,8 @@ export type Location = {
   focus: string[];
   nearby: string[];
   faqs: Faq[];
+  /** Zone pages only: neighbourhoods covered by this zone. */
+  areas?: string[];
 };
 
 const desc = (area: string) =>
@@ -277,13 +279,118 @@ const telangana: Location[] = [
   tg("sangareddy", "Sangareddy", "Sangareddy, on Hyderabad's north-western edge and close to the Patancheru industrial belt, has growing demand for homes, rental buildings and industrial structures."),
 ];
 
+// ---------------- Hyderabad zones (one page per zone, listing every neighbourhood) ----------------
+
+const zone = (slug: string, name: string, about: string[], areas: string[], focus: string[], nearby: string[]): Location => ({
+  slug: `architects-in-${slug}`,
+  area: name,
+  region: "Hyderabad",
+  seoTitle: `Architects & Vastu Consultants in ${name.split(" (")[0]} | BBMC`,
+  metaDescription: `Architects, engineers, interior designers and vastu consultants across ${name}: ${areas.slice(0, 5).join(", ")} and more. BBMC since 1995.`,
+  intro: about,
+  focus,
+  nearby,
+  areas,
+  faqs: [
+    { q: `Which areas of ${name} do you cover?`, a: `All of them, including ${areas.slice(0, 6).join(", ")} and every neighbourhood listed on this page.` },
+    { q: "Can you visit my plot or site?", a: "Yes. Call or WhatsApp us with your location and we'll schedule a site visit." },
+    { q: "Do you handle building permission drawings here?", a: "Yes. We prepare drawings as per the rules of the authority that applies to your plot (GHMC, HMDA or the local municipality)." },
+  ],
+});
+
+const zones: Location[] = [
+  zone(
+    "northeast-hyderabad",
+    "Northeast Hyderabad (ECIL, Kapra & Nagole)",
+    [
+      "The ECIL, Kapra, Sainikpuri and Nagole belt in north-east Hyderabad mixes established colonies with fast-growing layouts towards Jawaharnagar, Narapally and Pratap Singaram. Many families here are building independent houses and G+2 rental buildings on new plots, or rebuilding older homes.",
+      "BBMC's Boduppal office is close by, so site visits across this side of the city are quick to arrange. We handle plot Vaasthu, house plans, structural design, bank estimates, permission drawings and construction.",
+    ],
+    ["Kapra Lake area", "Sainik Puri Extension", "Dammaiguda Extension", "Jawaharnagar", "Thumkunta", "Yamnampet", "Edulabad", "Korremula", "Pratap Singaram Road", "Ankireddypally", "Narapally", "Bandlaguda (Nagole)", "Rampally Dayara", "Rajiv Gandhi Nagar (Kapra)", "Chintal Cheruvu", "Bhavani Nagar"],
+    ["Independent house and duplex plans", "G+2 / G+3 rental buildings", "Plot Vaasthu before purchase", "Bank loan estimates", "Construction"],
+    ["Boduppal", "Uppal", "Ghatkesar", "Peerzadiguda"],
+  ),
+  zone(
+    "north-hyderabad",
+    "North Hyderabad (Medchal, Alwal & Kompally)",
+    [
+      "North Hyderabad stretches from Alwal and Bollaram along the Medchal highway to Kompally, Thumkunta and the villages around the Outer Ring Road. It is popular for villas, gated communities, farm plots and new layouts.",
+      "We design Vaasthu-compliant villas and independent houses, plan layouts and plot developments, and take up construction across the northern corridor.",
+    ],
+    ["Kompally", "Bachupally", "Miyapur", "Pragathi Nagar", "Kowkur","Turkapally", "Thummalur", "Pudur", "Pothaipally", "Bommaipally", "Aliyabad", "Yellampet", "Muduchintalapally", "Devarayamjal", "Gundlapochampally", "Medchal Road area", "Alwal Extension", "Bollaram", "Rajiv Rahadari", "Qutubullapur Road area"],
+    ["Villa and farmhouse design", "Layout and plot development", "Plot Vaasthu", "Independent house design", "Construction"],
+    ["Kompally", "Secunderabad", "Bachupally"],
+  ),
+  zone(
+    "east-hyderabad",
+    "East Hyderabad (Uppal, Ghatkesar & LB Nagar)",
+    [
+      "East Hyderabad is BBMC's home ground. From Uppal, Boduppal and Peerzadiguda out to Pocharam, Ghatkesar and Bibinagar along the Warangal highway, and south to Gaddiannaram and Meerpet, it covers busy established colonies and fast-growing new layouts.",
+      "We have designed and built homes, rental buildings and commercial projects across the east for three decades: plans, Vaasthu, structural design, approvals and construction under one roof.",
+    ],
+    ["Uppal", "Boduppal", "Medipally", "Pocharam", "LB Nagar", "Pocharam Village","Annojiguda Extension", "Ghatkesar Village", "Edulabad Road area", "Bibinagar", "Ramannapet", "Tukkuguda East", "Peerzadiguda Extension", "Boduppal Extension", "Mallapur Industrial Area", "Uppal Bhagayath", "Kamalanagar", "Gaddiannaram", "Sri Ram Nagar Colony", "Medipally Extension", "Meerpet HB Colony"],
+    ["House plans and rental buildings", "Commercial and industrial buildings", "Vaasthu for homes, shops and factories", "Bank loan estimates", "Construction and renovation"],
+    ["Boduppal", "Uppal", "Peerzadiguda", "Medipally", "LB Nagar"],
+  ),
+  zone(
+    "south-hyderabad",
+    "South Hyderabad (Old City & Gandipet)",
+    [
+      "South Hyderabad covers the dense, historic Old City around Bahadurpura, Falaknuma, Yakutpura and Santosh Nagar, as well as the open, fast-developing belt towards Gandipet, Himayat Sagar and Chilukur.",
+      "In the Old City we focus on redevelopment of older houses, structural checks and Vaasthu corrections; towards Gandipet and Chilukur, on villas, farmhouses and plot development.",
+    ],
+    ["Adibatla", "Rajendra Nagar", "Budwel", "Shamshabad", "Tukkuguda", "Gandipet", "Chilukur","Himayat Sagar", "Premavathipet", "Peeramcheru", "Hyderguda", "Bahadurpura", "Kishanbagh", "Falaknuma Extension", "Chandrayangutta Road area", "Saidabad", "Santosh Nagar", "Yakutpura", "Dabirpura", "Puranapul", "Jahanuma"],
+    ["Redevelopment of older houses", "Structural assessment", "Vaasthu corrections", "Villa and farmhouse design", "Plot development"],
+    ["Narsingi", "Shamshabad", "Dilsukhnagar"],
+  ),
+  zone(
+    "west-hyderabad",
+    "West Hyderabad (Gachibowli, Tellapur & Patancheru)",
+    [
+      "West Hyderabad runs from the IT corridor around Gachibowli, Raidurg and Khajaguda through Manikonda, Puppalguda and Narsingi to Tellapur, Osman Nagar and the Patancheru industrial belt. Demand here ranges from apartment interiors to villas and industrial buildings.",
+      "BBMC designs homes, interiors, villas and industrial structures across the west, with Vaasthu and structural design handled in-house.",
+    ],
+    ["Kokapet", "Neopolis", "Narsingi", "Tellapur", "Kollur", "Gachibowli", "Kondapur", "Mokila", "Kondapur Extension","Gachibowli Extension", "Khajaguda", "Raidurg", "Puppalguda", "Manikonda Jagir", "Gandipet Road area", "Narsingi Extension", "Tellapur Extension", "Osman Nagar", "Pocharam West", "Peerancheru", "Patelguda", "Ashok Nagar (Patancheru)", "Bollarum (Patancheru)", "Rudraram"],
+    ["Apartment and villa interiors", "Villa design", "Industrial and commercial buildings", "Vaasthu for homes and offices", "Independent house design"],
+    ["Gachibowli", "Kondapur", "Manikonda", "Kokapet", "Narsingi", "Sangareddy"],
+  ),
+  zone(
+    "central-hyderabad",
+    "Central Hyderabad (Kachiguda, Basheerbagh & Secunderabad)",
+    [
+      "Central Hyderabad, from Basheerbagh and Himayatnagar's neighbours through Kachiguda, Barkatpura and Nallakunta to Padmarao Nagar and Warasiguda near Secunderabad, is dense and long established. Most projects here are redevelopments, additional floors, renovations and commercial upgrades.",
+      "Our structural engineers check existing buildings before any addition, and our architects make the most of compact central plots while keeping them Vaasthu-compliant.",
+    ],
+    ["Basheerbagh", "Gandhinagar", "Bakaram", "Ashoknagar", "Hill Fort", "Nallakunta", "Barkatpura", "Kachiguda", "Afzalgunj", "Gowliguda", "Chaderghat", "Putlibowli", "Sitaphalmandi", "Bholakpur", "Padmarao Nagar", "Warasiguda"],
+    ["Redevelopment and additional floors", "Structural assessment", "Commercial building design", "Renovation and interiors", "Vaasthu consultation"],
+    ["Secunderabad", "Ameerpet", "Begumpet", "Habsiguda"],
+  ),
+];
+
 export const locations: Location[] = [
+  ...zones,
   ...eastHyderabad.map((l) => ({ ...l, region: "Hyderabad" as const })),
   ...restOfHyderabad,
   ...telangana,
 ];
 
-export const hyderabadLocations = locations.filter((l) => l.region === "Hyderabad");
+export const zoneLocations = zones;
+
+// Top construction and real-estate hotspots, by corridor
+export const hotspots = [
+  { corridor: "West Hyderabad: IT & luxury corridor", zone: "architects-in-west-hyderabad", areas: ["Kokapet", "Neopolis", "Narsingi", "Tellapur", "Kollur", "Gachibowli", "Kondapur", "Mokila"] },
+  { corridor: "North Hyderabad: residential & mid-segment growth", zone: "architects-in-north-hyderabad", areas: ["Kompally", "Bachupally", "Miyapur", "Pragathi Nagar"] },
+  { corridor: "South Hyderabad: airport & industrial corridor", zone: "architects-in-south-hyderabad", areas: ["Adibatla", "Rajendra Nagar", "Budwel", "Shamshabad", "Tukkuguda"] },
+  { corridor: "East Hyderabad: suburban & highway belt", zone: "architects-in-east-hyderabad", areas: ["Uppal", "Boduppal", "Medipally", "Pocharam", "LB Nagar"] },
+];
+
+/** Link to an area's own page if it has one, otherwise to its zone page. */
+export const areaHref = (area: string, zoneSlug: string) => {
+  const own = locations.find((l) => l.area === area && !l.areas);
+  return `/${own ? own.slug : zoneSlug}`;
+};
+
+export const hyderabadLocations = locations.filter((l) => l.region === "Hyderabad" && !l.areas);
 export const telanganaLocations = locations.filter((l) => l.region === "Telangana");
 
 export const getLocation = (slug: string) => locations.find((l) => l.slug === slug);

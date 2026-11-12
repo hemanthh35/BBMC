@@ -7,7 +7,7 @@ import FaqList from "@/components/FaqList";
 import { AboutSection, FounderSection, ServicesSection, WhyChooseSection } from "@/components/sections";
 import { ArrowLink, Container, SectionHeading } from "@/components/ui";
 import { contactIntro, homeFaqs, testimonialsIntro } from "@/content/home";
-import { hyderabadLocations, telanganaLocations } from "@/content/locations";
+import { hyderabadLocations, telanganaLocations, zoneLocations } from "@/content/locations";
 import Link from "next/link";
 
 export const metadata: Metadata = {
@@ -48,6 +48,7 @@ export default function Home() {
           </div>
           <div className="space-y-10 lg:col-span-8">
             {[
+              { title: "Hyderabad zones", items: zoneLocations },
               { title: "Hyderabad & Secunderabad", items: hyderabadLocations },
               { title: "Telangana", items: telanganaLocations },
             ].map((g) => (
