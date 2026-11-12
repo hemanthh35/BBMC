@@ -12,7 +12,7 @@ const quickLinks = [
   { label: "Why Us", href: "/about#why-us" },
   { label: "Blog", href: "/blog" },
   { label: "FAQ", href: "/faq" },
-  { label: "Contact", href: "/contact" },
+  { label: "Contact", href: "/#contact" },
 ];
 
 export const socialLinks = [

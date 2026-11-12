@@ -44,7 +44,8 @@ export const site = {
   },
   geo: { lat: 17.4175222, lng: 78.5851395 },
   mapsUrl: "https://maps.app.goo.gl/VeRk9wKnZJkvT1kF6",
-  mapsEmbed: "https://www.google.com/maps?q=17.4175222,78.5851395&z=17&output=embed",
+  // Direct Maps embed URL (the old ?output=embed link redirects, which breaks inside an iframe)
+  mapsEmbed: "https://www.google.com/maps/embed?origin=mfe&pb=!1m3!2m1!1s17.4175222,78.5851395!6i17",
   social: {
     facebook: "https://www.facebook.com/share/1BThqWfbeZ/",
     instagram: "https://www.instagram.com/srinivasguptapaspunoori_bbmc/profile",
@@ -73,5 +74,5 @@ export const nav = [
   { label: "Projects", href: "/projects" },
   { label: "Locations", href: "/locations" },
   { label: "Blog", href: "/blog" },
-  { label: "Contact", href: "/contact" },
+  { label: "Contact", href: "/#contact" },
 ];

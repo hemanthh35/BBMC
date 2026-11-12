@@ -1,36 +1,28 @@
-"use client";
-
-import { useState } from "react";
-import { MapPin } from "lucide-react";
 import { site } from "@/content/site";
 
-/** Loads the Google Map iframe only when asked, keeping the page fast. */
+/** Google Map of the BBMC office. Native lazy loading keeps it off the critical path. */
 export default function MapFacade() {
-  const [show, setShow] = useState(false);
   return (
-    <div className="relative aspect-[16/10] overflow-hidden rounded-lg border border-line bg-mist">
-      {show ? (
+    <div className="overflow-hidden rounded-lg border border-line bg-mist">
+      <div className="relative aspect-[16/10]">
         <iframe
           src={site.mapsEmbed}
-          title="BBMC Location"
-          className="absolute inset-0 h-full w-full"
+          title="BBMC Location – Srinagar Colony, Boduppal, Hyderabad"
+          className="absolute inset-0 h-full w-full border-0"
           loading="lazy"
           referrerPolicy="no-referrer-when-downgrade"
           allowFullScreen
         />
-      ) : (
-        <button
-          type="button"
-          onClick={() => setShow(true)}
-          className="group absolute inset-0 flex flex-col items-center justify-center gap-3 text-center"
-        >
-          <span className="flex h-14 w-14 items-center justify-center rounded-full bg-brand-500 text-white transition-transform duration-300 group-hover:scale-110">
-            <MapPin className="h-6 w-6" aria-hidden="true" />
-          </span>
-          <span className="font-semibold text-ink">View larger map</span>
-          <span className="text-sm text-ink-60">BBMC, Srinagar Colony, Boduppal</span>
-        </button>
-      )}
+      </div>
+      <a
+        href={site.mapsUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="flex items-center justify-between gap-3 border-t border-line bg-white px-4 py-3 text-sm font-semibold text-ink transition-colors duration-200 hover:text-brand-700"
+      >
+        <span>View larger map</span>
+        <span className="text-ink-40" aria-hidden="true">↗</span>
+      </a>
     </div>
   );
 }

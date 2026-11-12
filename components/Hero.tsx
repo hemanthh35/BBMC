@@ -70,7 +70,7 @@ export default function Hero() {
           <a href={`tel:${site.phones[0].tel}`} className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-brand-500 px-7 font-semibold text-white transition-colors duration-200 hover:bg-brand-600">
             <Phone className="h-5 w-5" aria-hidden="true" /> Call Now
           </a>
-          <Link href="/contact" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-white/40 px-7 font-semibold text-white transition-colors duration-200 hover:bg-white hover:text-ink">
+          <Link href="/#contact"className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-white/40 px-7 font-semibold text-white transition-colors duration-200 hover:bg-white hover:text-ink">
             <MessageCircle className="h-5 w-5" aria-hidden="true" /> Get a Consultation
           </Link>
           <a href={whatsappLink()} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-white/40 px-7 font-semibold text-white transition-colors duration-200 hover:bg-white hover:text-ink">

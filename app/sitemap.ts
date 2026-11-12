@@ -20,7 +20,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     page("/locations", 0.7),
     page("/projects", 0.7),
     page("/about", 0.7),
-    page("/contact", 0.8),
     page("/faq", 0.6),
     page("/blog", 0.6, "weekly"),
     ...posts.map((p) => ({ ...page(`/blog/${p.slug}`, 0.6), lastModified: new Date(p.date) })),

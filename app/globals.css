@@ -52,6 +52,9 @@ p { text-wrap: pretty; }
 
 ::selection { background: var(--color-brand-100); }
 
+/* Keep anchored sections (e.g. /#contact) clear of the fixed header */
+section[id] { scroll-margin-top: 4.5rem; }
+
 /* ---------- Scroll reveal (only when JS is on; content stays visible without JS) ---------- */
 .js [data-reveal] {
   opacity: 0;
