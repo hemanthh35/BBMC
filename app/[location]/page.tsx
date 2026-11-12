@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { MapPin } from "lucide-react";
+import Image from "next/image";
+import { ArrowUpRight, MapPin } from "lucide-react";
 import PageHero from "@/components/PageHero";
 import FaqList from "@/components/FaqList";
 import Portfolio from "@/components/Portfolio";
@@ -40,7 +41,21 @@ export default async function LocationPage({ params }: Props) {
     [`House plans in ${name}`, "architectural-design"],
     [`Vastu consultant in ${name}`, "vastu-consultation"],
     [`Interior designers in ${name}`, "interior-design"],
+    [`Civil engineers in ${name}`, "structural-engineering"],
     [`Structural engineer in ${name}`, "structural-engineering"],
+    [`Civil contractors in ${name}`, "construction-renovation"],
+    [`Building contractors in ${name}`, "construction-renovation"],
+    [`Renovation contractors in ${name}`, "construction-renovation"],
+    [`Independent house builders in ${name}`, "builders-developers"],
+    [`Villa builders in ${name}`, "builders-developers"],
+    [`Building planners in ${name}`, "architectural-design"],
+    [`Duplex house design in ${name}`, "architectural-design"],
+    [`Vastu expert in ${name}`, "vastu-consultation"],
+    [`Home interiors in ${name}`, "interior-design"],
+    [`Modular kitchen in ${name}`, "interior-design"],
+    [`Property valuers in ${name}`, "estimates-valuations"],
+    [`Plot surveyors in ${name}`, "land-surveying-plot-development"],
+    [`GHMC plan approval in ${name}`, "building-permission-approvals"],
     [`Site engineers & supervision in ${name}`, "construction-renovation"],
     [`3D elevation design in ${name}`, "building-elevation-design"],
     [`Building permission in ${name}`, "building-permission-approvals"],
@@ -107,13 +122,22 @@ export default async function LocationPage({ params }: Props) {
 
       <section className="bg-mist py-20 lg:py-24">
         <Container>
-          <h2 className="text-2xl font-bold text-ink sm:text-3xl" data-reveal>Our services in {l.area}</h2>
-          <ul className="mt-8 grid gap-x-8 sm:grid-cols-2 lg:grid-cols-3">
-            {services.map((s) => (
-              <li key={s.slug} data-reveal>
-                <Link href={`/services/${s.slug}`} className="group block border-b border-line py-4">
-                  <span className="font-display font-semibold text-ink transition-colors group-hover:text-brand-700">{s.title}</span>
-                  <span className="mt-1 block text-sm text-ink-60">{s.short}</span>
+          <h2 className="text-2xl font-bold text-ink sm:text-3xl" data-reveal>Our services in {name}</h2>
+          <ul className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {services.map((s, i) => (
+              <li key={s.slug} data-reveal style={{ ["--reveal-delay" as string]: `${(i % 3) * 80}ms` }}>
+                <Link href={`/services/${s.slug}`} className="lift zoom group flex h-full flex-col overflow-hidden rounded-xl border border-line bg-white hover:border-brand-200">
+                  <div className="relative aspect-[16/10] overflow-hidden bg-mist">
+                    <Image quality={90} src={s.image} alt={`${s.title} in ${name}, Hyderabad by BBMC`} fill sizes="(min-width:1024px) 33vw, (min-width:640px) 50vw, 100vw" className="object-cover" />
+                    <span className="absolute left-4 top-4 rounded-full bg-white/95 px-3 py-1 font-display text-xs font-semibold text-brand-700">{String(i + 1).padStart(2, "0")}</span>
+                  </div>
+                  <div className="flex flex-1 flex-col p-6">
+                    <h3 className="font-display text-lg font-semibold text-ink transition-colors duration-200 group-hover:text-brand-700">{s.title} in {name}</h3>
+                    <p className="mt-2 flex-1 leading-relaxed text-ink-60">{s.short}</p>
+                    <span className="mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-brand-700">
+                      Learn more <ArrowUpRight className="h-4 w-4 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" aria-hidden="true" />
+                    </span>
+                  </div>
                 </Link>
               </li>
             ))}
