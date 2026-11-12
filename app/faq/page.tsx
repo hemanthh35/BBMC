@@ -6,6 +6,7 @@ import { faqSchema, JsonLd } from "@/components/seo";
 import { Container, CtaBand } from "@/components/ui";
 import { homeFaqs } from "@/content/home";
 import { services } from "@/content/services";
+import { serviceExtra } from "@/content/service-extra";
 
 export const metadata: Metadata = {
   title: "FAQ | Architects, Vastu & Construction Questions | BBMC",
@@ -15,7 +16,8 @@ export const metadata: Metadata = {
 };
 
 export default function FaqPage() {
-  const all = [...homeFaqs, ...services.flatMap((s) => s.faqs)];
+  const faqsFor = (slug: string, base: typeof homeFaqs) => [...base, ...(serviceExtra[slug]?.faqs ?? [])];
+  const all = [...homeFaqs, ...services.flatMap((s) => faqsFor(s.slug, s.faqs))];
   return (
     <>
       <PageHero crumbs={[{ name: "FAQ", href: "/faq" }]} eyebrow="FAQ" title="Frequently asked questions" />
@@ -28,7 +30,7 @@ export default function FaqPage() {
           {services.map((s) => (
             <div key={s.slug}>
               <h2 className="mb-6 text-2xl font-bold text-ink">{s.title}</h2>
-              <FaqList faqs={s.faqs} schema={false} />
+              <FaqList faqs={faqsFor(s.slug, s.faqs)} schema={false} />
             </div>
           ))}
         </Container>

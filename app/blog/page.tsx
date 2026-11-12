@@ -18,6 +18,7 @@ export default function BlogPage() {
     <>
       <PageHero crumbs={[{ name: "Blog", href: "/blog" }]} eyebrow="Blog" title="Guides on Vastu, design and construction">
         <p>Straightforward advice from three decades of designing and building in Hyderabad.</p>
+        <p className="mt-4">Whether you are buying a plot, planning a house, applying for building permission or arranging a home loan, these guides explain the steps in plain language: Vaasthu for different plot facings, the permission process and documents, and how construction estimates and loan disbursements work. New guides are added regularly.</p>
       </PageHero>
       <section className="py-20">
         <Container>

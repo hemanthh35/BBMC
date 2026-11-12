@@ -89,3 +89,24 @@ export function CtaBand({ title, text }: { title?: string; text?: string }) {
     </section>
   );
 }
+
+/** Simple long-form text block used to add explanatory content to list pages. */
+export function ProseSection({ title, paragraphs, list, muted = false }: { title: string; paragraphs: string[]; list?: string[]; muted?: boolean }) {
+  return (
+    <section className={`py-16 lg:py-20 ${muted ? "bg-mist" : ""}`}>
+      <Container className="max-w-3xl" >
+        <div data-reveal>
+          <h2 className="text-2xl font-bold text-ink sm:text-3xl">{title}</h2>
+          <div className="mt-5 space-y-4 text-lg leading-relaxed text-ink-80">
+            {paragraphs.map((p) => <p key={p}>{p}</p>)}
+          </div>
+          {list && (
+            <ul className="mt-5 list-disc space-y-2 pl-6 text-ink-80 marker:text-brand-600">
+              {list.map((l) => <li key={l}>{l}</li>)}
+            </ul>
+          )}
+        </div>
+      </Container>
+    </section>
+  );
+}

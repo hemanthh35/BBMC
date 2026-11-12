@@ -42,6 +42,25 @@ export const posts: Post[] = [
         ],
       },
       {
+        heading: "Choosing the right east-facing plot",
+        body: [
+          "Not every east-facing plot is equal. A plot with the road on the east and open space on the north-east is generally preferred. Plots with a slope towards the east or north are considered favourable, while a rise towards the north-east is usually avoided. Check the shape too: square and rectangular plots are easier to plan well than irregular ones.",
+          "If the plot has a road on two sides, such as east and north, it can be an excellent choice, but the entrance must be placed carefully.",
+        ],
+      },
+      {
+        heading: "Placing the staircase, tank and borewell",
+        body: [
+          "These fixed elements are hard to move later, so plan them early. In an east-facing house the staircase is best placed towards the south, west or south-west. The overhead water tank is usually kept on the south-west, and the borewell or sump towards the north-east or north.",
+        ],
+      },
+      {
+        heading: "East-facing apartments",
+        body: [
+          "In apartments you can't change the structure, but you can still follow Vaasthu: check the main door position, the kitchen corner and the master bedroom before buying, and plan interiors such as the puja unit, bed direction and study table accordingly.",
+        ],
+      },
+      {
         heading: "Get a plan checked",
         body: [
           "Every plot is different: size, road position, neighbouring buildings and slope all affect the plan. BBMC's Vaasthu consultants can review your plot or existing plan and suggest practical, buildable solutions.",
@@ -87,6 +106,30 @@ export const posts: Post[] = [
         ],
       },
       {
+        heading: "Setbacks, height and road width",
+        body: [
+          "The width of the road in front of your plot and the plot's size decide how much open space (setback) you must leave on each side and how tall you can build. Wider roads generally allow more floors. These rules change from time to time, so check the current regulations for your plot before finalising the design.",
+          "Designing to the rules from the start avoids the most common reasons for rejection and the risk of penalties later.",
+        ],
+      },
+      {
+        heading: "Common reasons applications get delayed",
+        body: [],
+        list: [
+          "Drawings that exceed permitted height, floors or coverage",
+          "Insufficient setbacks or parking",
+          "Missing or mismatched ownership and link documents",
+          "Plot in an unapproved layout that needs regularisation first",
+          "Incorrect plot measurements compared with documents",
+        ],
+      },
+      {
+        heading: "After you get permission",
+        body: [
+          "Build as per the approved drawings and keep the permission documents on site. Deviations can cause trouble at completion and when you sell the property or apply for a loan.",
+        ],
+      },
+      {
         heading: "How BBMC helps",
         body: [
           "We check your documents, prepare plans that meet the setback and height rules for your plot, and guide you through the application, reducing the chance of rejection or delay. Always confirm current fees and requirements with the approving authority.",
@@ -117,6 +160,23 @@ export const posts: Post[] = [
           "Rates and total cost per item",
           "Stage-wise cost breakup (foundation, structure, finishing)",
           "Signature of a qualified professional",
+        ],
+      },
+      {
+        heading: "How banks release the loan",
+        body: [
+          "Construction loans are usually released in stages rather than all at once, for example after the foundation, after the slabs and at finishing. The bank may inspect the site or ask for a progress certificate before each release, so the stage-wise breakup in your estimate matters.",
+          "Plan your own contribution too. Banks typically fund only a portion of the total cost, and the rest must come from your savings, often at the start of the project.",
+        ],
+      },
+      {
+        heading: "Common mistakes to avoid",
+        body: [],
+        list: [
+          "Underestimating finishing costs such as flooring, doors and electrical fittings",
+          "Leaving out compound wall, sump, borewell and approvals fees",
+          "Using an estimate that doesn't match the approved plan",
+          "Not keeping a contingency for price changes during construction",
         ],
       },
       {

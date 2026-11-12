@@ -8,6 +8,7 @@ import FaqList from "@/components/FaqList";
 import { JsonLd } from "@/components/seo";
 import { CallButton, Container, CtaBand, WhatsAppButton } from "@/components/ui";
 import { getService, services } from "@/content/services";
+import { serviceExtra } from "@/content/service-extra";
 import { locations } from "@/content/locations";
 import { SITE_URL } from "@/content/site";
 
@@ -34,6 +35,8 @@ export default async function ServicePage({ params }: Props) {
   const s = getService((await params).slug);
   if (!s) notFound();
   const related = s.related.map((r) => services.find((x) => x.slug === r)!).filter(Boolean);
+  const extra = serviceExtra[s.slug];
+  const faqs = [...s.faqs, ...(extra?.faqs ?? [])];
 
   return (
     <>
@@ -87,12 +90,36 @@ export default async function ServicePage({ params }: Props) {
         </Container>
       </section>
 
-      <section className="py-20 lg:py-24">
+      {extra && (
+        <section className="py-20 lg:py-24">
+          <Container className="max-w-3xl space-y-14">
+            {extra.sections.map((sec) => (
+              <div key={sec.heading} data-reveal>
+                <h2 className="text-2xl font-bold text-ink sm:text-3xl">{sec.heading}</h2>
+                <div className="mt-5 space-y-4 text-lg leading-relaxed text-ink-80">
+                  {sec.body.map((b) => <p key={b}>{b}</p>)}
+                </div>
+                {sec.list && (
+                  <ul className="mt-5 space-y-3">
+                    {sec.list.map((li) => (
+                      <li key={li} className="flex gap-3 text-ink-80">
+                        <Check className="mt-1.5 h-4 w-4 shrink-0 text-brand-600" aria-hidden="true" />{li}
+                      </li>
+                    ))}
+                  </ul>
+                )}
+              </div>
+            ))}
+          </Container>
+        </section>
+      )}
+
+      <section className={`py-20 lg:py-24 ${extra ? "bg-mist" : ""}`}>
         <Container className="grid gap-12 lg:grid-cols-12">
           <div className="lg:col-span-4">
             <h2 className="text-2xl font-bold text-ink sm:text-3xl" data-reveal>{s.title}: FAQs</h2>
           </div>
-          <div className="lg:col-span-8"><FaqList faqs={s.faqs} /></div>
+          <div className="lg:col-span-8"><FaqList faqs={faqs} /></div>
         </Container>
       </section>
 
