@@ -2,7 +2,8 @@
 
 import Image from "next/image";
 import { useState } from "react";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { ChevronLeft, ChevronRight, Expand } from "lucide-react";
+import Lightbox from "./Lightbox";
 import { interiors, portfolioIntro, projects } from "@/content/home";
 
 type Tab = "projects" | "interiors";
@@ -11,6 +12,7 @@ const PER_PAGE = 6;
 export default function Portfolio({ showAll = false }: { showAll?: boolean }) {
   const [tab, setTab] = useState<Tab>("projects");
   const [page, setPage] = useState(0);
+  const [open, setOpen] = useState<number | null>(null);
   const items = tab === "projects" ? projects : interiors;
   const pages = Math.ceil(items.length / PER_PAGE);
   const visible = showAll ? items : items.slice(page * PER_PAGE, page * PER_PAGE + PER_PAGE);
@@ -54,9 +56,19 @@ export default function Portfolio({ showAll = false }: { showAll?: boolean }) {
         {visible.map((item, i) => (
           <li key={item.slug} className="animate-fade-up" style={{ animationDelay: `${i * 60}ms` }}>
             <figure className="zoom group">
-              <div className="relative aspect-[4/3] overflow-hidden rounded-lg bg-mist">
+              <button
+                type="button"
+                onClick={() => setOpen(items.indexOf(item))}
+                aria-label={`View ${item.title} full screen`}
+                className="relative block aspect-[4/3] w-full cursor-zoom-in overflow-hidden rounded-lg bg-mist"
+              >
                 <Image quality={90} src={item.image} alt={item.alt} fill sizes="(min-width:1024px) 33vw, (min-width:640px) 50vw, 100vw" className="object-cover" />
-              </div>
+                <span className="absolute inset-0 flex items-center justify-center bg-ink/0 transition-colors duration-300 group-hover:bg-ink/25" aria-hidden="true">
+                  <span className="flex h-12 w-12 scale-90 items-center justify-center rounded-full bg-white/95 text-ink opacity-0 shadow-lg transition-all duration-300 group-hover:scale-100 group-hover:opacity-100">
+                    <Expand className="h-5 w-5" />
+                  </span>
+                </span>
+              </button>
               <figcaption className="mt-4 flex items-baseline justify-between gap-3 border-b border-line pb-3">
                 <span className="font-display font-semibold text-ink">{item.title}</span>
                 <span className="shrink-0 text-xs uppercase tracking-wider text-ink-40">{item.kind}</span>
@@ -65,6 +77,8 @@ export default function Portfolio({ showAll = false }: { showAll?: boolean }) {
           </li>
         ))}
       </ul>
+
+      {open !== null && <Lightbox items={items} index={open} onChange={setOpen} onClose={() => setOpen(null)} />}
 
       {!showAll && pages > 1 && (
         <div className="mt-10 flex items-center justify-between gap-4">

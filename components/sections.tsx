@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowUpRight, Check } from "lucide-react";
+import { ArrowUpRight, Check, FileCheck2, HardHat, MapPinned, MessagesSquare, PencilRuler } from "lucide-react";
 import { about, founder, servicesIntro, whyChoose } from "@/content/home";
 import { services } from "@/content/services";
 import { site } from "@/content/site";
@@ -132,6 +132,45 @@ export function FounderSection() {
             </ul>
           </div>
         </div>
+      </Container>
+    </section>
+  );
+}
+
+const steps = [
+  { title: "Consultation", text: "Tell us about your plot, family needs, budget and timeline, by call, WhatsApp or at our office.", Icon: MessagesSquare },
+  { title: "Site visit", text: "We measure the plot, check facing, road width, levels and surroundings, and study the documents.", Icon: MapPinned },
+  { title: "Design", text: "Vaasthu-compliant plans, 3D elevation and structural drawings, refined with you until they're right.", Icon: PencilRuler },
+  { title: "Approvals", text: "Building permission drawings and bank loan estimates, so you're ready to build and to fund it.", Icon: FileCheck2 },
+  { title: "Construction", text: "Our team builds with stage-wise quality checks and regular updates, through to handover.", Icon: HardHat },
+];
+
+export function ProcessSection() {
+  return (
+    <section id="how-we-work" className="py-20 lg:py-28">
+      <Container>
+        <SectionHeading
+          eyebrow="How we work"
+          title="From first call to handover, in five clear steps"
+          text="One team takes your project from idea to keys, so you always know what's happening next."
+        />
+        <ol className="relative mt-14 grid gap-10 lg:grid-cols-5 lg:gap-6">
+          {/* connecting line: vertical on phones, horizontal on desktop */}
+          <span className="absolute bottom-6 left-6 top-6 w-px bg-line lg:hidden" aria-hidden="true" />
+          <span className="absolute left-[10%] right-[10%] top-6 hidden h-px bg-line lg:block" aria-hidden="true" />
+          {steps.map(({ title, text, Icon }, i) => (
+            <li key={title} className="relative grid grid-cols-[3rem_1fr] gap-5 lg:block lg:text-center" data-reveal style={{ ["--reveal-delay" as string]: `${i * 100}ms` }}>
+              <div className="relative z-10 flex h-12 w-12 items-center justify-center rounded-full border border-brand-200 bg-white text-brand-600 shadow-[0_0_0_6px_var(--color-paper)] transition-colors duration-300 lg:mx-auto">
+                <Icon className="h-5 w-5" aria-hidden="true" />
+              </div>
+              <div className="lg:mt-6">
+                <p className="font-display text-xs font-semibold uppercase tracking-[0.16em] text-brand-700">Step {i + 1}</p>
+                <h3 className="mt-1 font-display text-lg font-semibold text-ink">{title}</h3>
+                <p className="mt-2 leading-relaxed text-ink-60 lg:text-sm">{text}</p>
+              </div>
+            </li>
+          ))}
+        </ol>
       </Container>
     </section>
   );

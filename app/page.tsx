@@ -5,7 +5,7 @@ import Portfolio from "@/components/Portfolio";
 import Testimonials from "@/components/Testimonials";
 import Contact from "@/components/Contact";
 import FaqList from "@/components/FaqList";
-import { AboutSection, FounderSection, ServicesSection, WhyChooseSection } from "@/components/sections";
+import { AboutSection, FounderSection, ProcessSection, ServicesSection, WhyChooseSection } from "@/components/sections";
 import { ArrowLink, Container, SectionHeading } from "@/components/ui";
 import { contactIntro, homeFaqs, testimonialsIntro } from "@/content/home";
 import { hyderabadLocations, telanganaLocations, zoneLocations } from "@/content/locations";
@@ -23,8 +23,9 @@ export default function Home() {
       <Hero />
       <AboutSection />
       <ServicesSection />
+      <ProcessSection />
 
-      <section id="portfolio" className="py-20 lg:py-28">
+      <section id="portfolio" className="border-t border-line py-20 lg:py-28">
         <Container>
           <Portfolio />
           <div className="mt-10"><ArrowLink href="/projects">View all projects</ArrowLink></div>
