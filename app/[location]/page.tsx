@@ -2,14 +2,15 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import Image from "next/image";
-import { ArrowUpRight, MapPin } from "lucide-react";
-import PageHero from "@/components/PageHero";
+import { ArrowRight, ArrowUpRight, Check, ChevronDown, MapPin, Phone } from "lucide-react";
 import FaqList from "@/components/FaqList";
 import Portfolio from "@/components/Portfolio";
-import { CallButton, Container, CtaBand, WhatsAppButton } from "@/components/ui";
+import { Breadcrumbs } from "@/components/seo";
+import { WhatsAppIcon } from "@/components/icons";
+import { Container, CtaBand } from "@/components/ui";
 import { areaHref, getLocation, locations } from "@/content/locations";
 import { services } from "@/content/services";
-import { defaultOgImage, site } from "@/content/site";
+import { defaultOgImage, site, whatsappLink } from "@/content/site";
 
 type Props = { params: Promise<{ location: string }> };
 
@@ -29,100 +30,190 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
+// Search phrases grouped by what people are looking for. Shown in a collapsed panel (visible on click).
+const searchGroups = (name: string): { title: string; items: [string, string][] }[] => [
+  {
+    title: "Builders & construction",
+    items: [
+      [`Builders in ${name}`, "builders-developers"],
+      [`Construction company in ${name}`, "construction-renovation"],
+      [`House construction contractors near ${name}`, "construction-renovation"],
+      [`Civil contractors in ${name}`, "construction-renovation"],
+      [`Building contractors in ${name}`, "construction-renovation"],
+      [`Independent house builders in ${name}`, "builders-developers"],
+      [`Villa builders in ${name}`, "builders-developers"],
+      [`Renovation contractors in ${name}`, "construction-renovation"],
+      [`Site engineers & supervision in ${name}`, "construction-renovation"],
+    ],
+  },
+  {
+    title: "Architecture & engineering",
+    items: [
+      [`Architects in ${name}`, "architectural-design"],
+      [`Civil engineers in ${name}`, "structural-engineering"],
+      [`Structural engineer in ${name}`, "structural-engineering"],
+      [`Building planners in ${name}`, "architectural-design"],
+      [`House plans in ${name}`, "architectural-design"],
+      [`Duplex house design in ${name}`, "architectural-design"],
+      [`3D elevation design in ${name}`, "building-elevation-design"],
+    ],
+  },
+  {
+    title: "Vastu & interiors",
+    items: [
+      [`Vastu consultant in ${name}`, "vastu-consultation"],
+      [`Vastu expert in ${name}`, "vastu-consultation"],
+      [`Interior designers in ${name}`, "interior-design"],
+      [`Home interiors in ${name}`, "interior-design"],
+      [`Modular kitchen in ${name}`, "interior-design"],
+    ],
+  },
+  {
+    title: "Approvals, estimates & surveys",
+    items: [
+      [`Building permission in ${name}`, "building-permission-approvals"],
+      [`GHMC plan approval in ${name}`, "building-permission-approvals"],
+      [`Bank loan estimate in ${name}`, "estimates-valuations"],
+      [`Property valuers in ${name}`, "estimates-valuations"],
+      [`Land surveyors in ${name}`, "land-surveying-plot-development"],
+      [`Plot surveyors in ${name}`, "land-surveying-plot-development"],
+    ],
+  },
+];
+
+const heroImageFor = (slug: string) => {
+  // Rotate through the service photos so neighbouring area pages don't all look identical.
+  const pool = services.map((s) => s.image);
+  let h = 0;
+  for (const c of slug) h = (h * 31 + c.charCodeAt(0)) >>> 0;
+  return pool[h % pool.length];
+};
+
 export default async function LocationPage({ params }: Props) {
   const l = getLocation((await params).location);
   if (!l) notFound();
   const name = l.area.split(" (")[0];
-  const searches: [string, string][] = [
-    [`Builders in ${name}`, "builders-developers"],
-    [`Construction company in ${name}`, "construction-renovation"],
-    [`House construction contractors near ${name}`, "construction-renovation"],
-    [`Architects in ${name}`, "architectural-design"],
-    [`House plans in ${name}`, "architectural-design"],
-    [`Vastu consultant in ${name}`, "vastu-consultation"],
-    [`Interior designers in ${name}`, "interior-design"],
-    [`Civil engineers in ${name}`, "structural-engineering"],
-    [`Structural engineer in ${name}`, "structural-engineering"],
-    [`Civil contractors in ${name}`, "construction-renovation"],
-    [`Building contractors in ${name}`, "construction-renovation"],
-    [`Renovation contractors in ${name}`, "construction-renovation"],
-    [`Independent house builders in ${name}`, "builders-developers"],
-    [`Villa builders in ${name}`, "builders-developers"],
-    [`Building planners in ${name}`, "architectural-design"],
-    [`Duplex house design in ${name}`, "architectural-design"],
-    [`Vastu expert in ${name}`, "vastu-consultation"],
-    [`Home interiors in ${name}`, "interior-design"],
-    [`Modular kitchen in ${name}`, "interior-design"],
-    [`Property valuers in ${name}`, "estimates-valuations"],
-    [`Plot surveyors in ${name}`, "land-surveying-plot-development"],
-    [`GHMC plan approval in ${name}`, "building-permission-approvals"],
-    [`Site engineers & supervision in ${name}`, "construction-renovation"],
-    [`3D elevation design in ${name}`, "building-elevation-design"],
-    [`Building permission in ${name}`, "building-permission-approvals"],
-    [`Bank loan estimate in ${name}`, "estimates-valuations"],
-    [`Land surveyors in ${name}`, "land-surveying-plot-development"],
-  ];
   const nearby = locations.filter((x) => x.slug !== l.slug && l.nearby.includes(x.area));
+  const groups = searchGroups(name);
+  const linkedAreas = l.areas?.filter((a) => areaHref(a, l.slug) !== `/${l.slug}`) ?? [];
+  const otherAreas = l.areas?.filter((a) => !linkedAreas.includes(a)) ?? [];
 
   return (
     <>
-      <PageHero crumbs={[{ name: "Locations", href: "/locations" }, { name: l.area, href: `/${l.slug}` }]} eyebrow={l.areas ? `${l.areas.length} neighbourhoods covered` : `Serving ${l.area}, ${l.region ?? "Hyderabad"}`} title={`Architects, Builders & Vastu Consultants in ${l.area}`}>
-        <p>{site.roles}</p>
-        <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-          <CallButton />
-          <WhatsAppButton text={`Hi BBMC, I have a project in ${l.area}.`} className="text-ink hover:bg-ink hover:text-white" />
-        </div>
-      </PageHero>
+      {/* ---------- Hero ---------- */}
+      <section className="relative overflow-hidden bg-ink pt-18 text-white">
+        <Image quality={90} src={heroImageFor(l.slug)} alt="" fill priority sizes="100vw" className="object-cover opacity-30" />
+        <div className="absolute inset-0 bg-gradient-to-r from-ink via-ink/90 to-ink/40" aria-hidden="true" />
+        <Container className="relative py-16 lg:py-24">
+          <div className="[&_a]:text-white/70 [&_span]:text-white/70 [&_[aria-current]]:text-white">
+            <Breadcrumbs items={[{ name: "Locations", href: "/locations" }, { name: name, href: `/${l.slug}` }]} />
+          </div>
+          <p className="mt-10 inline-flex items-center gap-2 rounded-full bg-white/10 px-3 py-1 text-xs font-semibold uppercase tracking-[0.16em] text-brand-200 animate-fade-up">
+            <MapPin className="h-3.5 w-3.5" aria-hidden="true" />
+            {l.areas ? `${l.areas.length} neighbourhoods` : `${name}, ${l.region ?? "Hyderabad"}`}
+          </p>
+          <h1 className="mt-5 max-w-3xl text-4xl font-bold leading-[1.1] sm:text-5xl animate-fade-up">
+            Architects, Builders &amp; Vastu Consultants in {name}
+          </h1>
+          <p className="mt-5 max-w-2xl text-lg leading-relaxed text-white/75 animate-fade-up" style={{ animationDelay: "100ms" }}>
+            Design, engineering, Vaasthu, interiors and construction from one trusted team, serving {name} since 1995.
+          </p>
+          <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+            <a href={`tel:${site.phones[0].tel}`} className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-brand-500 px-7 font-semibold text-white transition-colors duration-200 hover:bg-brand-600">
+              <Phone className="h-5 w-5" aria-hidden="true" /> Call Now
+            </a>
+            <a href={whatsappLink(`Hi BBMC, I have a project in ${name}.`)} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-white/40 px-7 font-semibold text-white transition-colors duration-200 hover:bg-white hover:text-ink">
+              <WhatsAppIcon className="h-5 w-5" /> WhatsApp
+            </a>
+          </div>
+          <dl className="mt-12 grid max-w-xl grid-cols-3 gap-6 border-t border-white/15 pt-8">
+            {[
+              ["30+", "Years"],
+              ["500+", "Projects"],
+              ["3000+", "Clients"],
+            ].map(([v, k]) => (
+              <div key={k}>
+                <dt className="sr-only">{k}</dt>
+                <dd className="font-display text-3xl font-bold text-white">{v}</dd>
+                <dd className="mt-1 text-sm text-white/60">{k}</dd>
+              </div>
+            ))}
+          </dl>
+        </Container>
+      </section>
 
+      {/* ---------- Intro ---------- */}
       <section className="py-20 lg:py-24">
         <Container className="grid gap-14 lg:grid-cols-12">
-          <div className="space-y-6 text-lg leading-relaxed text-ink-80 lg:col-span-7" data-reveal>
-            {l.intro.map((p) => <p key={p}>{p}</p>)}
+          <div className="lg:col-span-7" data-reveal>
+            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-brand-700">About {name}</p>
+            <div className="mt-4 space-y-5 text-lg leading-relaxed text-ink-80">
+              {l.intro.map((p) => <p key={p}>{p}</p>)}
+            </div>
           </div>
           <aside className="lg:col-span-5" data-reveal>
-            <h2 className="font-display text-xl font-bold text-ink">What we do most in {l.area}</h2>
-            <ul className="mt-5 divide-y divide-line border-y border-line">
-              {l.focus.map((f) => <li key={f} className="py-3 text-ink-80">{f}</li>)}
-            </ul>
-            <div className="mt-8 flex gap-3 rounded-lg bg-mist p-5 text-sm text-ink-60">
-              <MapPin className="h-5 w-5 shrink-0 text-brand-600" aria-hidden="true" />
-              <address className="not-italic">
-                <strong className="block text-ink">{site.legalName}</strong>
-                {site.address.lines.join(" ")}
-              </address>
+            <div className="rounded-2xl border border-line p-7">
+              <h2 className="font-display text-lg font-bold text-ink">What we do most in {name}</h2>
+              <ul className="mt-5 space-y-3">
+                {l.focus.map((f) => (
+                  <li key={f} className="flex gap-3 text-ink-80">
+                    <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-brand-50 text-brand-700">
+                      <Check className="h-3 w-3" aria-hidden="true" />
+                    </span>
+                    {f}
+                  </li>
+                ))}
+              </ul>
+              <div className="mt-7 flex gap-3 border-t border-line pt-6 text-sm text-ink-60">
+                <MapPin className="h-5 w-5 shrink-0 text-brand-600" aria-hidden="true" />
+                <address className="not-italic">
+                  <strong className="block text-ink">{site.legalName}</strong>
+                  {site.address.lines.join(" ")}
+                </address>
+              </div>
             </div>
           </aside>
         </Container>
       </section>
 
+      {/* ---------- Neighbourhoods (zone pages) ---------- */}
       {l.areas && (
-        <section className="border-t border-line py-20 lg:py-24">
+        <section className="pb-20 lg:pb-24">
           <Container>
-            <h2 className="text-2xl font-bold text-ink sm:text-3xl" data-reveal>Areas we cover in {l.area}</h2>
-            <ul className="mt-8 flex flex-wrap gap-2" data-reveal>
-              {l.areas.map((a) => {
-                const href = areaHref(a, l.slug);
-                const own = href !== `/${l.slug}`;
-                return (
-                  <li key={a}>
-                    {own ? (
-                      <Link href={href} className="inline-block rounded-full border border-brand-200 bg-brand-50 px-4 py-2 text-sm font-medium text-brand-700 transition-colors duration-200 hover:border-brand-500">
+            <div className="rounded-2xl bg-mist p-7 sm:p-10" data-reveal>
+              <h2 className="text-2xl font-bold text-ink sm:text-3xl">Neighbourhoods we cover</h2>
+              {linkedAreas.length > 0 && (
+                <ul className="mt-7 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+                  {linkedAreas.map((a) => (
+                    <li key={a}>
+                      <Link href={areaHref(a, l.slug)} className="group flex items-center justify-between rounded-lg bg-white px-4 py-3 font-medium text-ink shadow-[0_1px_0_var(--color-line)] transition-colors hover:text-brand-700">
                         {a}
+                        <ArrowRight className="h-4 w-4 text-ink-40 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:text-brand-600" aria-hidden="true" />
                       </Link>
-                    ) : (
-                      <span className="inline-block rounded-full border border-line px-4 py-2 text-sm text-ink-80">{a}</span>
-                    )}
+                    </li>
+                  ))}
+                </ul>
+              )}
+              <ul className="mt-7 columns-2 gap-x-8 text-sm text-ink-60 sm:columns-3 lg:columns-4">
+                {otherAreas.map((a) => (
+                  <li key={a} className="flex break-inside-avoid items-center gap-2 py-1.5">
+                    <span className="h-1 w-1 shrink-0 rounded-full bg-brand-500" aria-hidden="true" />
+                    {a}
                   </li>
-                );
-              })}
-            </ul>
+                ))}
+              </ul>
+            </div>
           </Container>
         </section>
       )}
 
+      {/* ---------- Services ---------- */}
       <section className="bg-mist py-20 lg:py-24">
         <Container>
-          <h2 className="text-2xl font-bold text-ink sm:text-3xl" data-reveal>Our services in {name}</h2>
+          <div className="max-w-2xl" data-reveal>
+            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-brand-700">Our services</p>
+            <h2 className="mt-3 text-3xl font-bold text-ink sm:text-4xl">Everything you need to build in {name}</h2>
+          </div>
           <ul className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {services.map((s, i) => (
               <li key={s.slug} data-reveal style={{ ["--reveal-delay" as string]: `${(i % 3) * 80}ms` }}>
@@ -145,36 +236,19 @@ export default async function LocationPage({ params }: Props) {
         </Container>
       </section>
 
-      <section className="py-16 lg:py-20">
-        <Container>
-          <h2 className="text-2xl font-bold text-ink sm:text-3xl" data-reveal>Popular searches in {name}</h2>
-          <p className="mt-3 max-w-2xl text-ink-60" data-reveal>
-            Looking for builders, architects or a construction company near {name}? BBMC covers all of these from one team.
-          </p>
-          <ul className="mt-6 flex flex-wrap gap-2" data-reveal>
-            {searches.map(([label, slug]) => (
-              <li key={label}>
-                <Link href={`/services/${slug}`} className="inline-block rounded-full border border-line px-4 py-2 text-sm text-ink-80 transition-colors duration-200 hover:border-brand-500 hover:text-brand-700">
-                  {label}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </Container>
-      </section>
-
       <section className="py-20 lg:py-24"><Container><Portfolio /></Container></section>
 
+      {/* ---------- FAQ ---------- */}
       <section className="border-t border-line py-20 lg:py-24">
         <Container className="grid gap-12 lg:grid-cols-12">
           <div className="lg:col-span-4">
-            <h2 className="text-2xl font-bold text-ink sm:text-3xl" data-reveal>{l.area}: FAQs</h2>
+            <h2 className="text-2xl font-bold text-ink sm:text-3xl" data-reveal>Questions about building in {name}</h2>
             {nearby.length > 0 && (
               <div className="mt-10" data-reveal>
                 <h3 className="text-sm font-semibold uppercase tracking-widest text-ink-40">Nearby areas</h3>
                 <ul className="mt-4 space-y-2">
                   {nearby.map((n) => (
-                    <li key={n.slug}><Link href={`/${n.slug}`} className="link-underline text-ink-80 hover:text-brand-700">Architects in {n.area}</Link></li>
+                    <li key={n.slug}><Link href={`/${n.slug}`} className="link-underline text-ink-80 hover:text-brand-700">{n.area}</Link></li>
                   ))}
                 </ul>
               </div>
@@ -184,7 +258,33 @@ export default async function LocationPage({ params }: Props) {
         </Container>
       </section>
 
-      <CtaBand title={`Planning a project in ${l.area}?`} />
+      <CtaBand title={`Planning a project in ${name}?`} />
+
+      {/* ---------- Related searches: collapsed by default, opens on click ---------- */}
+      <section className="border-t border-line bg-mist">
+        <Container className="py-6">
+          <details className="group">
+            <summary className="flex cursor-pointer items-center justify-between gap-4 text-sm font-semibold text-ink-60 hover:text-ink">
+              Related searches in {name}
+              <ChevronDown className="h-4 w-4 transition-transform duration-300 group-open:rotate-180" aria-hidden="true" />
+            </summary>
+            <div className="mt-6 grid gap-8 pb-4 sm:grid-cols-2 lg:grid-cols-4">
+              {groups.map((g) => (
+                <div key={g.title}>
+                  <h3 className="text-xs font-semibold uppercase tracking-widest text-ink-40">{g.title}</h3>
+                  <ul className="mt-3 space-y-2 text-sm">
+                    {g.items.map(([label, slug]) => (
+                      <li key={label}>
+                        <Link href={`/services/${slug}`} className="link-underline text-ink-60 hover:text-brand-700">{label}</Link>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
+            </div>
+          </details>
+        </Container>
+      </section>
     </>
   );
 }

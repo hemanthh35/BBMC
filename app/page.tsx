@@ -47,26 +47,20 @@ export default function Home() {
             <SectionHeading eyebrow="Areas We Serve" title="Architects across Hyderabad & Telangana" text="We serve homeowners, landowners and businesses in every part of Hyderabad and Secunderabad, and in towns and cities across Telangana." />
             <div className="mt-6" data-reveal><ArrowLink href="/locations">All areas</ArrowLink></div>
           </div>
-          <div className="space-y-10 lg:col-span-8">
-            {[
-              { title: "Hyderabad zones", items: zoneLocations },
-              { title: "Hyderabad & Secunderabad", items: hyderabadLocations },
-              { title: "Telangana", items: telanganaLocations },
-            ].map((g) => (
-              <div key={g.title} data-reveal>
-                <h3 className="text-sm font-semibold uppercase tracking-widest text-ink-40">{g.title}</h3>
-                <ul className="mt-4 flex flex-wrap gap-2">
-                  {g.items.map((l) => (
-                    <li key={l.slug}>
-                      <Link href={`/${l.slug}`} className="inline-block rounded-full border border-line bg-white px-4 py-2 text-sm font-medium text-ink-80 transition-colors duration-200 hover:border-brand-500 hover:text-brand-700">
-                        {l.area}
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
-              </div>
+          <ul className="grid gap-4 sm:grid-cols-2 lg:col-span-8">
+            {zoneLocations.map((z) => (
+              <li key={z.slug} data-reveal>
+                <Link href={`/${z.slug}`} className="lift group flex h-full flex-col rounded-xl border border-line bg-white p-5 hover:border-brand-200">
+                  <span className="font-display font-semibold text-ink transition-colors group-hover:text-brand-700">{z.area.split(" (")[0]}</span>
+                  <span className="mt-1 text-sm text-ink-60">{z.area.match(/\((.*)\)/)?.[1]}</span>
+                  <span className="mt-3 text-xs font-semibold text-brand-700">{z.areas?.length} neighbourhoods →</span>
+                </Link>
+              </li>
             ))}
-          </div>
+            <li className="sm:col-span-2 text-sm text-ink-60" data-reveal>
+              Also serving {telanganaLocations.slice(0, 5).map((t) => t.area).join(", ")} and more across Telangana. {hyderabadLocations.length > 0 && null}
+            </li>
+          </ul>
         </Container>
       </section>
 
