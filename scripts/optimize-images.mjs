@@ -82,7 +82,9 @@ async function watermark(photoWidth, photoHeight) {
 // The original architecture renders carry a "free version of Watermarkly" banner along the bottom.
 const BANNER_CROP = 0.06;
 
-const isPhoto = (name) => /^(projects|interiors|services)\//.test(name);
+// Watermark is off by default (client's choice). Run with WATERMARK=1 to add the centred logo again.
+const WATERMARK = process.env.WATERMARK === "1";
+const isPhoto = (name) => WATERMARK && /^(projects|interiors|services)\//.test(name);
 
 let before = 0;
 let after = 0;
