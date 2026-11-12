@@ -33,7 +33,8 @@ export default function Hero() {
           alt=""
           fill
           priority={i === 0}
-          loading={i === 0 ? "eager" : "lazy"}
+          loading="eager"
+          fetchPriority={i === 0 ? "high" : "low"}
           sizes="100vw"
           className={`-z-20 object-cover transition-opacity duration-[1000ms] ${i === index ? "opacity-100" : "opacity-0"}`}
         />
