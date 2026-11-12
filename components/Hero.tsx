@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useCallback, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { ChevronLeft, ChevronRight, MessageCircle, Phone } from "lucide-react";
 import Link from "next/link";
 import { heroSlides } from "@/content/home";
@@ -18,6 +18,15 @@ export default function Hero() {
 
   const slide = heroSlides[index];
 
+  const [restReady, setRestReady] = useState(false);
+  useEffect(() => {
+    let t: ReturnType<typeof setTimeout>;
+    const start = () => { t = setTimeout(() => setRestReady(true), 1200); };
+    if (document.readyState === "complete") start();
+    else window.addEventListener("load", start, { once: true });
+    return () => { clearTimeout(t); window.removeEventListener("load", start); };
+  }, []);
+
   return (
     <section
       className="relative isolate flex min-h-[88svh] items-end overflow-hidden bg-ink pt-18 text-white"
@@ -25,32 +34,36 @@ export default function Hero() {
       aria-label="BBMC services"
       {...handlers}
     >
-      {heroSlides.map((s, i) => (
-        <Image
-          quality={90}
-          key={s.image}
-          src={s.image}
-          alt=""
-          fill
-          priority={i === 0}
-          loading="eager"
-          fetchPriority={i === 0 ? "high" : "low"}
-          sizes="100vw"
-          className={`-z-20 object-cover transition-opacity duration-[1000ms] ${i === index ? "opacity-100" : "opacity-0"}`}
-        />
-      ))}
+      {heroSlides.map((s, i) =>
+        // Only the first slide loads with the page; the rest load once the page is done,
+        // so phones on slow connections see the hero quickly.
+        i === 0 || restReady ? (
+          <Image
+            quality={90}
+            key={s.image}
+            src={s.image}
+            alt=""
+            fill
+            priority={i === 0}
+            loading="eager"
+            fetchPriority={i === 0 ? "high" : "low"}
+            sizes="100vw"
+            className={`-z-20 object-cover transition-opacity duration-[1000ms] ${i === index ? "opacity-100" : "opacity-0"}`}
+          />
+        ) : null,
+      )}
       <div className="absolute inset-0 -z-10 bg-ink/65" aria-hidden="true" />
 
       <div className="mx-auto w-full max-w-7xl px-4 pb-16 pt-20 sm:px-6 lg:px-8 lg:pb-24">
-        <h1 className="mb-6 max-w-3xl text-sm font-semibold uppercase tracking-[0.18em] text-brand-200 animate-fade-up">
+        <h1 className="mb-6 max-w-3xl text-sm font-semibold uppercase tracking-[0.18em] text-brand-200 animate-rise">
           Architects, Builders & Vaasthu Consultants in Hyderabad & Telangana
         </h1>
 
         <div aria-live={paused ? "polite" : "off"} className="min-h-[200px] sm:min-h-[180px]">
-          <p key={`t-${index}`} className="max-w-3xl text-4xl font-bold leading-[1.1] font-display sm:text-5xl lg:text-6xl animate-fade-up">
+          <p key={`t-${index}`} className="max-w-3xl text-4xl font-bold leading-[1.1] font-display sm:text-5xl lg:text-6xl animate-rise">
             {slide.title}
           </p>
-          <p key={`s-${index}`} className="mt-5 max-w-2xl text-lg leading-relaxed text-white/80 sm:text-xl animate-fade-up" style={{ animationDelay: "120ms" }}>
+          <p key={`s-${index}`} className="mt-5 max-w-2xl text-lg leading-relaxed text-white/80 sm:text-xl animate-rise" style={{ animationDelay: "120ms" }}>
             {slide.subtitle}
           </p>
         </div>

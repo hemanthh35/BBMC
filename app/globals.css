@@ -99,6 +99,13 @@ section[id] { scroll-margin-top: 4.5rem; }
 }
 .animate-fade-up { animation: fade-up 500ms var(--ease-out-soft) both; }
 
+/* Headings: slide up without starting invisible, so they count as painted immediately (better LCP) */
+@keyframes rise {
+  from { transform: translateY(10px); }
+  to { transform: none; }
+}
+.animate-rise { animation: rise 500ms var(--ease-out-soft) both; }
+
 /* FAQ disclosure */
 details > summary { list-style: none; cursor: pointer; }
 details > summary::-webkit-details-marker { display: none; }

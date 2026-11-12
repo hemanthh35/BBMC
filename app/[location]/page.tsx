@@ -108,14 +108,14 @@ export default async function LocationPage({ params }: Props) {
           <div className="[&_a]:text-white/70 [&_span]:text-white/70 [&_[aria-current]]:text-white">
             <Breadcrumbs items={[{ name: "Locations", href: "/locations" }, { name: name, href: `/${l.slug}` }]} />
           </div>
-          <p className="mt-10 inline-flex items-center gap-2 rounded-full bg-white/10 px-3 py-1 text-xs font-semibold uppercase tracking-[0.16em] text-brand-200 animate-fade-up">
+          <p className="mt-10 inline-flex items-center gap-2 rounded-full bg-white/10 px-3 py-1 text-xs font-semibold uppercase tracking-[0.16em] text-brand-200 animate-rise">
             <MapPin className="h-3.5 w-3.5" aria-hidden="true" />
             {l.areas ? `${l.areas.length} neighbourhoods` : `${name}, ${l.region ?? "Hyderabad"}`}
           </p>
-          <h1 className="mt-5 max-w-3xl text-4xl font-bold leading-[1.1] sm:text-5xl animate-fade-up">
+          <h1 className="mt-5 max-w-3xl text-4xl font-bold leading-[1.1] sm:text-5xl animate-rise">
             Architects, Builders &amp; Vastu Consultants in {name}
           </h1>
-          <p className="mt-5 max-w-2xl text-lg leading-relaxed text-white/75 animate-fade-up" style={{ animationDelay: "100ms" }}>
+          <p className="mt-5 max-w-2xl text-lg leading-relaxed text-white/75 animate-rise" style={{ animationDelay: "100ms" }}>
             Design, engineering, Vaasthu, interiors and construction from one trusted team, serving {name} since 1995.
           </p>
           <div className="mt-8 flex flex-col gap-3 sm:flex-row">

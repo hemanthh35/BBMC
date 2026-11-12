@@ -66,6 +66,7 @@ export const site = {
     { label: "BBMC Balaji Benchmark Constructions on Justdial", href: "https://www.justdial.com/Rangareddy/Bbmc-Balaji-Benchmark-Constructions-Pvt-Ltd-Near-Ambedkar-Statue-Adjacent-To-Lane-To-Universe-Bakery-Boduppal/040PXX40-XX40-230304143534-G3B5_BZDET", sameAs: false },
   ],
   logo: "/img/bbmc-logo.png",
+  logoSmall: "/img/bbmc-logo-240.webp", // header/footer (18 KB instead of 490 KB)
   // Original stat text kept: "30+ Years of Excellence", "Vaasthu Compliant Designs", "3000+ Happy Clients", "500+ Projects Delivered".
   stats: [
     { count: 30, suffix: "+", unit: "Years", label: "of Excellence" },

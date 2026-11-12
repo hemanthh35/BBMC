@@ -6,8 +6,11 @@ const nextConfig: NextConfig = {
   output: "export",
   trailingSlash: false,
   images: {
-    // Images are already optimised to WebP by scripts/optimize-images.mjs
-    unoptimized: true,
+    // Pre-sized WebP copies (scripts/responsive-images.mjs) chosen per screen by lib/image-loader.ts
+    loader: "custom",
+    loaderFile: "./lib/image-loader.ts",
+    deviceSizes: [480, 800, 1280, 1920],
+    imageSizes: [],
   },
   poweredByHeader: false,
 };
