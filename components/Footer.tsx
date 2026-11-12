@@ -27,9 +27,7 @@ export default function Footer() {
     <footer className="bg-ink text-white">
       <div className="mx-auto grid max-w-7xl gap-12 px-4 py-16 sm:px-6 md:grid-cols-2 lg:grid-cols-12 lg:px-8">
         <div className="lg:col-span-4">
-          <div className="inline-block rounded-md bg-white p-2">
-            <Image src={site.logo} alt="BBMC Logo" width={120} height={80} className="h-14 w-auto" />
-          </div>
+          <Image src={site.logo} alt="BBMC Logo" width={896} height={670} sizes="120px" className="h-20 w-auto" />
           <p className="mt-5 max-w-sm text-sm leading-relaxed text-white/60">{site.roles}</p>
           <address className="mt-6 not-italic text-sm leading-relaxed text-white/70">
             <strong className="block font-semibold text-white">{site.legalName}</strong>

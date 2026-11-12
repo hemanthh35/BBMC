@@ -5,6 +5,7 @@ import { about, founder, servicesIntro, whyChoose } from "@/content/home";
 import { services } from "@/content/services";
 import { site } from "@/content/site";
 import { Container, SectionHeading } from "./ui";
+import CountUp from "./CountUp";
 
 export function AboutSection() {
   return (
@@ -21,17 +22,19 @@ export function AboutSection() {
             ))}
           </ul>
         </div>
-        <dl className="grid grid-cols-2 self-center border-l border-t border-line lg:col-span-5">
+        <ul className="grid grid-cols-2 self-center border-l border-t border-line lg:col-span-5">
           {site.stats.map((s, i) => (
-            <div key={s.value} className="border-b border-r border-line p-6 sm:p-8" data-reveal style={{ ["--reveal-delay" as string]: `${i * 80}ms` }}>
-              <dt className="sr-only">{s.label}</dt>
-              <dd>
-                <span className="block font-display text-2xl font-bold text-ink sm:text-3xl">{s.value}</span>
-                <span className="mt-1 block text-sm text-ink-60">{s.label}</span>
-              </dd>
-            </div>
+            <li key={s.label} className="flex flex-col justify-between border-b border-r border-line p-5 transition-colors duration-300 hover:bg-brand-50 sm:p-8" data-reveal style={{ ["--reveal-delay" as string]: `${i * 80}ms` }}>
+              <span className="font-display text-5xl font-bold leading-none tracking-tight text-brand-600 sm:text-6xl">
+                <CountUp to={s.count} suffix={s.suffix} />
+              </span>
+              <span className="mt-4">
+                {s.unit && <span className="block font-display text-base font-semibold text-ink sm:text-lg">{s.unit}</span>}
+                <span className="block text-sm text-ink-60">{s.label}</span>
+              </span>
+            </li>
           ))}
-        </dl>
+        </ul>
       </Container>
     </section>
   );

@@ -51,12 +51,13 @@ export const site = {
     instagram: "https://www.instagram.com/srinivasguptapaspunoori_bbmc/profile",
     youtube: "https://www.youtube.com/@bbmcconsultants",
   },
-  logo: "/images/bbmc-logo.webp",
+  logo: "/images/bbmc-logo.png",
+  // Original stat text kept: "30+ Years of Excellence", "Vaasthu Compliant Designs", "3000+ Happy Clients", "500+ Projects Delivered".
   stats: [
-    { value: "30+ Years", label: "of Excellence" },
-    { value: "Vaasthu Compliant", label: "Designs" },
-    { value: "3000+", label: "Happy Clients" },
-    { value: "500+", label: "Projects Delivered" },
+    { count: 30, suffix: "+", unit: "Years", label: "of Excellence" },
+    { count: 100, suffix: "%", unit: "Vaasthu Compliant", label: "Designs" },
+    { count: 3000, suffix: "+", unit: "", label: "Happy Clients" },
+    { count: 500, suffix: "+", unit: "", label: "Projects Delivered" },
   ],
   areasServed: [
     "Boduppal", "Uppal", "Peerzadiguda", "Nacharam", "Habsiguda", "Tarnaka", "Medipally",

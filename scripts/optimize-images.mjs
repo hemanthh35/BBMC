@@ -9,7 +9,6 @@ const out = path.resolve("public/images");
 
 const map = {
   // Logo + founder
-  "WhatsApp_Image_2024-10-09_at_13.29.25_02525d47_1764782945945.jpg": ["bbmc-logo", 400],
   "WhatsApp_Image_2025-12-04_at_01.01.12_a177f220_1764791221568.jpg": ["er-paspunoori-srinivas-gupta-founder-bbmc", 800],
   // Service / hero images
   "generated_images/modern_architecture_building_hero.png": ["services/architects-hyderabad-hero", 1920],
@@ -50,6 +49,43 @@ const map = {
   "IMG-20251204-WA0161_1764801580440.jpg": ["interiors/grand-foyer-design", 1600],
 };
 
+// ---- Watermark: transparent BBMC logo (run scripts/make-logo.mjs first) ----
+const LOGO = path.resolve("public/images/bbmc-logo.png");
+const WM_WIDTH = 0.16; // logo width as a share of the photo width
+const WM_OPACITY = 0.92;
+
+async function watermark(photoWidth, photoHeight) {
+  const w = Math.round(Math.max(110, photoWidth * WM_WIDTH));
+  const logo = await sharp(LOGO).resize({ width: w }).ensureAlpha().toBuffer();
+  const { height: h } = await sharp(logo).metadata();
+  const fade = (img, opacity) =>
+    sharp(img)
+      .composite([{ input: Buffer.from([255, 255, 255, Math.round(255 * opacity)]), raw: { width: 1, height: 1, channels: 4 }, tile: true, blend: "dest-in" }])
+      .png()
+      .toBuffer();
+  // Translucent dark plate behind the logo: the logo was designed for a dark background,
+  // and this keeps its grey parts readable on white walls and skies.
+  const pad = Math.round(w * 0.08);
+  const pw = w + pad * 2;
+  const ph = h + pad * 2;
+  const r = Math.round(pad * 0.9);
+  const plate = Buffer.from(
+    `<svg xmlns="http://www.w3.org/2000/svg" width="${pw}" height="${ph}"><rect width="${pw}" height="${ph}" rx="${r}" ry="${r}" fill="#111111" fill-opacity="0.45"/></svg>`,
+  );
+  const margin = Math.round(photoWidth * 0.025);
+  const left = photoWidth - pw - margin;
+  const top = photoHeight - ph - margin;
+  return [
+    { input: plate, left, top },
+    { input: await fade(logo, WM_OPACITY), left: left + pad, top: top + pad },
+  ];
+}
+
+// The original architecture renders carry a "free version of Watermarkly" banner along the bottom.
+const BANNER_CROP = 0.06;
+
+const isPhoto = (name) => /^(projects|interiors|services)\//.test(name);
+
 let before = 0;
 let after = 0;
 for (const [file, [name, width]] of Object.entries(map)) {
@@ -57,12 +93,20 @@ for (const [file, [name, width]] of Object.entries(map)) {
   const output = path.join(out, `${name}.webp`);
   await mkdir(path.dirname(output), { recursive: true });
   before += (await stat(input)).size;
-  await sharp(input).rotate().resize({ width, withoutEnlargement: true }).webp({ quality: 78 }).toFile(output);
+  let base = sharp(input).rotate();
+  if (name.startsWith("projects/")) {
+    const meta = await sharp(input).metadata();
+    base = base.extract({ left: 0, top: 0, width: meta.width, height: Math.round(meta.height * (1 - BANNER_CROP)) });
+  }
+  const resized = await base.resize({ width, withoutEnlargement: true }).toBuffer({ resolveWithObject: true });
+  let img = sharp(resized.data);
+  if (isPhoto(name)) img = img.composite(await watermark(resized.info.width, resized.info.height));
+  await img.webp({ quality: 78 }).toFile(output);
   after += (await stat(output)).size;
 }
 
 // Logo as PNG too (for schema / favicon sources)
-await sharp(path.join(src, "WhatsApp_Image_2024-10-09_at_13.29.25_02525d47_1764782945945.jpg"))
+await sharp(LOGO)
   .resize({ width: 512, height: 512, fit: "contain", background: "#ffffff" })
   .png()
   .toFile(path.resolve("app/icon.png"));
