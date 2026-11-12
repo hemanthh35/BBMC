@@ -129,7 +129,11 @@ export default async function ServicePage({ params }: Props) {
           url: `${SITE_URL}/services/${s.slug}`,
           image: `${SITE_URL}${s.image}`,
           provider: { "@id": `${SITE_URL}/#business` },
-          areaServed: locations.map((l) => ({ "@type": "Place", name: `${l.area}, Hyderabad` })),
+          areaServed: [
+            { "@type": "City", name: "Hyderabad" },
+            { "@type": "City", name: "Secunderabad" },
+            { "@type": "State", name: "Telangana" },
+          ],
         }}
       />
     </>

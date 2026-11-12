@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { services } from "@/content/services";
-import { locations } from "@/content/locations";
+import { telanganaLocations } from "@/content/locations";
 import { site } from "@/content/site";
 import { FacebookIcon, GoogleIcon, InstagramIcon, YoutubeIcon } from "./icons";
 
@@ -88,13 +88,17 @@ export default function Footer() {
             <li>{site.hours.display}</li>
           </ul>
           <h2 className="mt-8 text-sm font-semibold uppercase tracking-widest text-white/50">Areas We Serve</h2>
-          <ul className="mt-4 flex flex-wrap gap-x-3 gap-y-2 text-sm">
-            {locations.map((l) => (
-              <li key={l.slug}>
-                <Link href={`/${l.slug}`} className="link-underline text-white/75 hover:text-white">{l.area}</Link>
-              </li>
-            ))}
-          </ul>
+          <p className="mt-4 text-sm leading-relaxed text-white/75">
+            All of Hyderabad &amp; Secunderabad, and{" "}
+            {telanganaLocations.slice(0, 4).map((l, i) => (
+              <span key={l.slug}>
+                <Link href={`/${l.slug}`} className="link-underline hover:text-white">{l.area}</Link>
+                {i < 3 ? ", " : ""}
+              </span>
+            ))}{" "}
+            and across Telangana.
+          </p>
+          <Link href="/locations" className="link-underline mt-3 inline-block text-sm font-semibold text-brand-200 hover:text-white">All areas →</Link>
         </div>
       </div>
 

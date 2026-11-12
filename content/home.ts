@@ -168,7 +168,7 @@ export const interiors = [
 
 export const homeFaqs = [
   { q: "Where is BBMC located?",
-    a: "Our office is at Plot No.12, Street No.1, Srinagar Colony, near Ambedkar Statue, Boduppal, Hyderabad – 500092. We serve Boduppal, Uppal, Peerzadiguda, Nacharam, Habsiguda, Medipally, LB Nagar and all of Hyderabad." },
+    a: "Our office is at Plot No.12, Street No.1, Srinagar Colony, near Ambedkar Statue, Boduppal, Hyderabad – 500092. We serve clients across all of Hyderabad and Secunderabad, and in cities and towns across Telangana, including Warangal, Karimnagar, Nizamabad and Khammam." },
   { q: "What services does BBMC offer?",
     a: "Architectural and engineering design, structural engineering, interior design, Vaasthu consultation, construction and renovation, building and development, bank loan estimates and valuations, land surveying, building elevations and building permission drawings." },
   { q: "Are all BBMC designs Vaasthu-compliant?",

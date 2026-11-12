@@ -7,11 +7,11 @@ import FaqList from "@/components/FaqList";
 import { AboutSection, FounderSection, ServicesSection, WhyChooseSection } from "@/components/sections";
 import { ArrowLink, Container, SectionHeading } from "@/components/ui";
 import { contactIntro, homeFaqs, testimonialsIntro } from "@/content/home";
-import { locations } from "@/content/locations";
+import { hyderabadLocations, telanganaLocations } from "@/content/locations";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Architects & Vastu Consultants in Boduppal, Uppal | BBMC",
+  title: "Architects & Vastu Consultants in Hyderabad, Telangana | BBMC",
   alternates: { canonical: "/" },
   openGraph: { url: "/" },
 };
@@ -43,18 +43,28 @@ export default function Home() {
       <section className="bg-mist py-20 lg:py-24">
         <Container className="grid gap-12 lg:grid-cols-12">
           <div className="lg:col-span-4">
-            <SectionHeading eyebrow="Areas We Serve" title="Architects near you in East Hyderabad" text="From our office in Boduppal we serve homeowners, landowners and businesses across East Hyderabad." />
+            <SectionHeading eyebrow="Areas We Serve" title="Architects across Hyderabad & Telangana" text="We serve homeowners, landowners and businesses in every part of Hyderabad and Secunderabad, and in towns and cities across Telangana." />
+            <div className="mt-6" data-reveal><ArrowLink href="/locations">All areas</ArrowLink></div>
           </div>
-          <ul className="grid content-start gap-x-8 sm:grid-cols-2 lg:col-span-8">
-            {locations.map((l) => (
-              <li key={l.slug} data-reveal>
-                <Link href={`/${l.slug}`} className="group flex items-center justify-between border-b border-line py-4 font-display font-semibold text-ink transition-colors hover:text-brand-700">
-                  Architects in {l.area}
-                  <span className="text-ink-40 transition-transform duration-300 group-hover:translate-x-1" aria-hidden="true">→</span>
-                </Link>
-              </li>
+          <div className="space-y-10 lg:col-span-8">
+            {[
+              { title: "Hyderabad & Secunderabad", items: hyderabadLocations },
+              { title: "Telangana", items: telanganaLocations },
+            ].map((g) => (
+              <div key={g.title} data-reveal>
+                <h3 className="text-sm font-semibold uppercase tracking-widest text-ink-40">{g.title}</h3>
+                <ul className="mt-4 flex flex-wrap gap-2">
+                  {g.items.map((l) => (
+                    <li key={l.slug}>
+                      <Link href={`/${l.slug}`} className="inline-block rounded-full border border-line bg-white px-4 py-2 text-sm font-medium text-ink-80 transition-colors duration-200 hover:border-brand-500 hover:text-brand-700">
+                        {l.area}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
             ))}
-          </ul>
+          </div>
         </Container>
       </section>
 

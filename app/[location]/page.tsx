@@ -35,7 +35,7 @@ export default async function LocationPage({ params }: Props) {
 
   return (
     <>
-      <PageHero crumbs={[{ name: "Locations", href: "/locations" }, { name: l.area, href: `/${l.slug}` }]} eyebrow={`Serving ${l.area}, Hyderabad`} title={`Architects, Engineers & Vastu Consultants in ${l.area}`}>
+      <PageHero crumbs={[{ name: "Locations", href: "/locations" }, { name: l.area, href: `/${l.slug}` }]} eyebrow={`Serving ${l.area}, ${l.region ?? "Hyderabad"}`} title={`Architects, Engineers & Vastu Consultants in ${l.area}`}>
         <p>{site.roles}</p>
         <div className="mt-8 flex flex-col gap-3 sm:flex-row">
           <CallButton />

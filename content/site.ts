@@ -59,10 +59,7 @@ export const site = {
     { count: 3000, suffix: "+", unit: "", label: "Happy Clients" },
     { count: 500, suffix: "+", unit: "", label: "Projects Delivered" },
   ],
-  areasServed: [
-    "Boduppal", "Uppal", "Peerzadiguda", "Nacharam", "Habsiguda", "Tarnaka", "Medipally",
-    "Ramanthapur", "Mallapur", "LB Nagar", "Ghatkesar", "Hayathnagar", "Secunderabad", "Hyderabad",
-  ],
+  areasServed: ["Hyderabad", "Secunderabad", "Telangana"],
 };
 
 export const whatsappLink = (text: string = site.whatsappText) =>

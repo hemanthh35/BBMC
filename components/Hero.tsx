@@ -41,7 +41,7 @@ export default function Hero() {
 
       <div className="mx-auto w-full max-w-7xl px-4 pb-16 pt-20 sm:px-6 lg:px-8 lg:pb-24">
         <h1 className="mb-6 max-w-3xl text-sm font-semibold uppercase tracking-[0.18em] text-brand-200 animate-fade-up">
-          Architects, Engineers & Vaasthu Consultants in Boduppal, Uppal – Hyderabad
+          Architects, Engineers & Vaasthu Consultants in Hyderabad & Telangana
         </h1>
 
         <div aria-live={paused ? "polite" : "off"} className="min-h-[200px] sm:min-h-[180px]">

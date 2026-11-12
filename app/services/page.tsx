@@ -7,7 +7,7 @@ import { servicesIntro } from "@/content/home";
 export const metadata: Metadata = {
   title: "Architecture, Vastu, Interior & Construction Services | BBMC",
   description:
-    "All BBMC services in Boduppal & Uppal, Hyderabad: architectural design, structural engineering, interiors, Vaasthu, construction, estimates, surveying, elevations and approvals.",
+    "All BBMC services across Hyderabad & Telangana: architectural design, structural engineering, interiors, Vaasthu, construction, estimates, surveying, elevations and approvals.",
   alternates: { canonical: "/services" },
   openGraph: { url: "/services" },
 };

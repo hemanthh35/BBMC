@@ -9,7 +9,7 @@ import { founder } from "@/content/home";
 export const metadata: Metadata = {
   title: "About BBMC | Architects & Engineers in Hyderabad Since 1995",
   description:
-    "Balaji Benchmark Consultants (BBMC), founded in 1995 by Er. Paspunoori Srinivas Gupta: architects, engineers and Vaasthu consultants in Boduppal, Hyderabad.",
+    "Balaji Benchmark Consultants (BBMC), founded in 1995 by Er. Paspunoori Srinivas Gupta: architects, engineers and Vaasthu consultants in Hyderabad, Telangana.",
   alternates: { canonical: "/about" },
   openGraph: { url: "/about" },
 };

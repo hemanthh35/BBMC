@@ -51,8 +51,8 @@ const map = {
 
 // ---- Watermark: transparent BBMC logo (run scripts/make-logo.mjs first) ----
 const LOGO = path.resolve("public/images/bbmc-logo.png");
-const WM_WIDTH = 0.16; // logo width as a share of the photo width
-const WM_OPACITY = 0.92;
+const WM_WIDTH = 0.3; // logo width as a share of the photo width
+const WM_OPACITY = 0.45;
 
 async function watermark(photoWidth, photoHeight) {
   const w = Math.round(Math.max(110, photoWidth * WM_WIDTH));
@@ -63,21 +63,19 @@ async function watermark(photoWidth, photoHeight) {
       .composite([{ input: Buffer.from([255, 255, 255, Math.round(255 * opacity)]), raw: { width: 1, height: 1, channels: 4 }, tile: true, blend: "dest-in" }])
       .png()
       .toBuffer();
-  // Translucent dark plate behind the logo: the logo was designed for a dark background,
-  // and this keeps its grey parts readable on white walls and skies.
-  const pad = Math.round(w * 0.08);
-  const pw = w + pad * 2;
-  const ph = h + pad * 2;
-  const r = Math.round(pad * 0.9);
-  const plate = Buffer.from(
-    `<svg xmlns="http://www.w3.org/2000/svg" width="${pw}" height="${ph}"><rect width="${pw}" height="${ph}" rx="${r}" ry="${r}" fill="#111111" fill-opacity="0.45"/></svg>`,
-  );
-  const margin = Math.round(photoWidth * 0.025);
-  const left = photoWidth - pw - margin;
-  const top = photoHeight - ph - margin;
+  // Centred so it survives the object-cover cropping used by the cards and galleries.
+  // A soft dark glow keeps the grey parts of the logo visible on white walls and skies.
+  const glowPad = Math.round(w * 0.12);
+  const glow = await sharp({ create: { width: w + glowPad * 2, height: h + glowPad * 2, channels: 4, background: { r: 0, g: 0, b: 0, alpha: 0 } } })
+    .composite([{ input: await sharp(logo).ensureAlpha().linear([0, 0, 0, 1], [0, 0, 0, 0]).toBuffer(), left: glowPad, top: glowPad }])
+    .blur(Math.max(4, w / 25))
+    .png()
+    .toBuffer();
+  const left = Math.round((photoWidth - w) / 2);
+  const top = Math.round((photoHeight - h) / 2);
   return [
-    { input: plate, left, top },
-    { input: await fade(logo, WM_OPACITY), left: left + pad, top: top + pad },
+    { input: await fade(glow, 0.28), left: left - glowPad, top: top - glowPad },
+    { input: await fade(logo, WM_OPACITY), left, top },
   ];
 }
 

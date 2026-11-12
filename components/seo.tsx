@@ -24,7 +24,7 @@ export function businessSchema() {
     name: site.legalName,
     alternateName: ["BBMC", "Balaji Benchmark Consultants", "BBMC Consultants"],
     description:
-      "Architects, structural engineers, interior designers, Vaasthu (vastu) consultants, builders and developers in Boduppal & Uppal, Hyderabad since 1995.",
+      "Architects, structural engineers, interior designers, Vaasthu (vastu) consultants, builders and developers in Hyderabad & Telangana since 1995.",
     url: SITE_URL,
     logo: `${SITE_URL}/icon.png`,
     image: `${SITE_URL}/images/services/architects-hyderabad-hero.webp`,

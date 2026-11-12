@@ -23,10 +23,10 @@ export const services: Service[] = [
     slug: "architectural-design",
     title: "Architectural & Engineering Design",
     short: "Comprehensive architectural planning and engineering solutions for all project types.",
-    seoTitle: "Architects in Boduppal & Uppal, Hyderabad | House Plans | BBMC",
+    seoTitle: "Architects in Hyderabad & Telangana | House Plans | BBMC",
     metaDescription:
-      "Residential and commercial architects in Boduppal & Uppal, Hyderabad. Vastu-compliant house plans, duplex, G+1, G+2 and villa designs by BBMC since 1995.",
-    h1: "Architectural Design & House Plans in Boduppal, Uppal – Hyderabad",
+      "Residential and commercial architects in Hyderabad & Telangana. Vastu-compliant house plans, duplex, G+1, G+2 and villa designs by BBMC since 1995.",
+    h1: "Architectural Design & House Plans in Hyderabad & Telangana",
     image: "/images/services/architectural-design.webp",
     imageAlt: "Architect at BBMC preparing a vastu-compliant house plan in Hyderabad",
     intro: [
@@ -73,9 +73,9 @@ export const services: Service[] = [
     slug: "structural-engineering",
     title: "Structural Engineering",
     short: "Expert structural analysis and design ensuring safety and durability.",
-    seoTitle: "Structural Engineer in Hyderabad | RCC Design | BBMC Boduppal",
+    seoTitle: "Structural Engineer in Hyderabad | RCC Design | BBMC Hyderabad",
     metaDescription:
-      "Structural engineers in Boduppal & Uppal, Hyderabad. RCC design, structural drawings, stability checks and safe, economical designs by BBMC since 1995.",
+      "Structural engineers in Hyderabad & Telangana. RCC design, structural drawings, stability checks and safe, economical designs by BBMC since 1995.",
     h1: "Structural Engineering & RCC Design in Hyderabad",
     image: "/images/services/structural-engineering.webp",
     imageAlt: "BBMC structural engineer inspecting RCC work at a construction site in Hyderabad",
@@ -118,10 +118,10 @@ export const services: Service[] = [
     slug: "interior-design",
     title: "Interior Design & Space Planning",
     short: "Transform spaces with creative interior designs that blend aesthetics with functionality.",
-    seoTitle: "Interior Designers in Uppal & Boduppal, Hyderabad | BBMC",
+    seoTitle: "Interior Designers in Hyderabad & Telangana | BBMC",
     metaDescription:
-      "Home, office, restaurant and cafe interior designers in Uppal & Boduppal, Hyderabad. Modular kitchens, living rooms, bedrooms and space planning by BBMC.",
-    h1: "Interior Designers in Uppal & Boduppal, Hyderabad",
+      "Home, office, restaurant and cafe interior designers in Hyderabad & Telangana. Modular kitchens, living rooms, bedrooms and space planning by BBMC.",
+    h1: "Interior Designers in Hyderabad & Telangana",
     image: "/images/services/interior-design.webp",
     imageAlt: "Modern living room interior designed by BBMC in Hyderabad",
     intro: [
@@ -164,10 +164,10 @@ export const services: Service[] = [
     slug: "vastu-consultation",
     title: "Vaasthu Consultation",
     short: "Traditional Vaasthu-compliant designs for harmony and prosperity in your space.",
-    seoTitle: "Vastu Consultant in Uppal & Boduppal, Hyderabad | BBMC",
+    seoTitle: "Vastu Consultant in Hyderabad & Telangana | BBMC",
     metaDescription:
-      "Experienced vastu (Vaasthu) consultant in Uppal & Boduppal, Hyderabad. Vastu for plots, homes, offices and shops, plus vastu correction without demolition.",
-    h1: "Vastu Consultant in Uppal & Boduppal, Hyderabad",
+      "Experienced vastu (Vaasthu) consultant in Hyderabad & Telangana. Vastu for plots, homes, offices and shops, plus vastu correction without demolition.",
+    h1: "Vastu Consultant in Hyderabad & Telangana",
     image: "/images/services/vastu-consultation.webp",
     imageAlt: "BBMC vastu consultant reviewing a house plan with clients in Hyderabad",
     intro: [
@@ -212,10 +212,10 @@ export const services: Service[] = [
     slug: "construction-renovation",
     title: "Construction & Renovation",
     short: "Quality construction and renovation services with attention to every detail.",
-    seoTitle: "House Construction & Renovation in Boduppal, Uppal | BBMC",
+    seoTitle: "House Construction & Renovation in Hyderabad, Telangana | BBMC",
     metaDescription:
-      "House construction and renovation contractors in Boduppal & Uppal, Hyderabad. Quality construction, transparent communication and timely delivery by BBMC.",
-    h1: "House Construction & Renovation in Boduppal, Uppal – Hyderabad",
+      "House construction and renovation contractors in Hyderabad & Telangana. Quality construction, transparent communication and timely delivery by BBMC.",
+    h1: "House Construction & Renovation in Hyderabad & Telangana",
     image: "/images/services/construction.webp",
     imageAlt: "BBMC construction team building a residential project in Hyderabad",
     intro: [
@@ -257,10 +257,10 @@ export const services: Service[] = [
     slug: "builders-developers",
     title: "Builders & Developers",
     short: "Complete building solutions from foundation to finish with experienced construction teams.",
-    seoTitle: "Builders & Developers in Boduppal, Uppal, Hyderabad | BBMC",
+    seoTitle: "Builders & Developers in Hyderabad & Telangana | BBMC",
     metaDescription:
-      "Builders and developers in Boduppal & Uppal, Hyderabad. Residential and commercial development from foundation to finish, with experienced teams since 1995.",
-    h1: "Builders & Developers in Boduppal, Uppal – Hyderabad",
+      "Builders and developers in Hyderabad & Telangana. Residential and commercial development from foundation to finish, with experienced teams since 1995.",
+    h1: "Builders & Developers in Hyderabad & Telangana",
     image: "/images/projects/nvs-heights-tower.webp",
     imageAlt: "NVS Heights residential tower developed by BBMC builders in Hyderabad",
     intro: [
@@ -298,7 +298,7 @@ export const services: Service[] = [
     short: "Bank-approved estimates and professional property valuations.",
     seoTitle: "Bank Loan Estimates & Property Valuation in Hyderabad | BBMC",
     metaDescription:
-      "Bank-approved construction estimates and property valuations in Boduppal, Uppal & Hyderabad for home loans and project financing. BBMC since 1995.",
+      "Bank-approved construction estimates and property valuations across Hyderabad & Telangana for home loans and project financing. BBMC since 1995.",
     h1: "Bank Loan Estimates & Property Valuations in Hyderabad",
     image: "/images/services/architects-hyderabad-hero.webp",
     imageAlt: "Building estimate and valuation documents prepared by BBMC",
@@ -335,7 +335,7 @@ export const services: Service[] = [
     short: "Accurate land surveying and expert plot development planning.",
     seoTitle: "Land Surveying & Plot Development in Hyderabad | BBMC",
     metaDescription:
-      "Land surveyors and plot development planning in Boduppal, Uppal & Hyderabad. Accurate measurement, layout planning and plot development by BBMC.",
+      "Land surveyors and plot development planning across Hyderabad & Telangana. Accurate measurement, layout planning and plot development by BBMC.",
     h1: "Land Surveying & Plot Development in Hyderabad",
     image: "/images/services/plot-development.webp",
     imageAlt: "Plot development and layout planning by BBMC in Hyderabad",
@@ -372,7 +372,7 @@ export const services: Service[] = [
     short: "Stunning building elevation designs that enhance aesthetics and create lasting impressions.",
     seoTitle: "Building Elevation & 3D Front Elevation Design Hyderabad | BBMC",
     metaDescription:
-      "Front elevation and 3D building elevation designers in Boduppal & Uppal, Hyderabad. Modern, contemporary and classic elevations for houses and buildings.",
+      "Front elevation and 3D building elevation designers in Hyderabad & Telangana. Modern, contemporary and classic elevations for houses and buildings.",
     h1: "Building Elevation & 3D Front Elevation Design in Hyderabad",
     image: "/images/projects/premium-duplex-villa.webp",
     imageAlt: "Premium duplex villa front elevation designed by BBMC",
@@ -409,7 +409,7 @@ export const services: Service[] = [
     short: "Drawings and guidance for GHMC, HMDA and municipal building permissions.",
     seoTitle: "Building Permission Drawings, GHMC & HMDA Approvals | BBMC",
     metaDescription:
-      "Building permission drawings and approval guidance for GHMC, HMDA and municipal areas in Boduppal, Uppal & Hyderabad. BBMC architects and engineers.",
+      "Building permission drawings and approval guidance for GHMC, HMDA and municipal areas across Hyderabad & Telangana. BBMC architects and engineers.",
     h1: "Building Permission & Approval Drawings in Hyderabad",
     image: "/images/projects/modern-apartment-complex.webp",
     imageAlt: "Apartment complex with building permission drawings prepared by BBMC architects",

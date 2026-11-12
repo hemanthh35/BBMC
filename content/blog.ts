@@ -123,7 +123,7 @@ export const posts: Post[] = [
         heading: "Tips",
         body: [
           "Ask your bank for its required format before the estimate is prepared, and keep the approved building plan ready. A realistic estimate avoids shortfalls during construction.",
-          "BBMC prepares bank-approved estimates and property valuations for clients across Boduppal, Uppal and Hyderabad.",
+          "BBMC prepares bank-approved estimates and property valuations for clients across Hyderabad and Telangana.",
         ],
       },
     ],

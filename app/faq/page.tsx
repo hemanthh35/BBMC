@@ -8,7 +8,7 @@ import { services } from "@/content/services";
 
 export const metadata: Metadata = {
   title: "FAQ | Architects, Vastu & Construction Questions | BBMC",
-  description: "Answers to common questions about BBMC's architecture, Vaasthu, structural, interior, construction and approval services in Boduppal, Uppal & Hyderabad.",
+  description: "Answers to common questions about BBMC's architecture, Vaasthu, structural, interior, construction and approval services across Hyderabad & Telangana.",
   alternates: { canonical: "/faq" },
   openGraph: { url: "/faq" },
 };
