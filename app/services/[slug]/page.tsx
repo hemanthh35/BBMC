@@ -9,6 +9,7 @@ import { JsonLd } from "@/components/seo";
 import { CallButton, Container, CtaBand, WhatsAppButton } from "@/components/ui";
 import { getService, services } from "@/content/services";
 import { serviceExtra } from "@/content/service-extra";
+import { serviceKeywords } from "@/content/service-keywords";
 import { locations } from "@/content/locations";
 import { SITE_URL } from "@/content/site";
 
@@ -24,10 +25,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!s) return {};
   const url = `/services/${s.slug}`;
   return {
-    title: s.seoTitle,
+    title: serviceKeywords[s.slug]?.title ?? s.seoTitle,
     description: s.metaDescription,
     alternates: { canonical: url },
-    openGraph: { url, title: s.seoTitle, description: s.metaDescription, images: [{ url: s.image, alt: s.imageAlt }] },
+    openGraph: { url, title: serviceKeywords[s.slug]?.title ?? s.seoTitle, description: s.metaDescription, images: [{ url: s.image, alt: s.imageAlt }] },
   };
 }
 
@@ -42,6 +43,12 @@ export default async function ServicePage({ params }: Props) {
     <>
       <PageHero crumbs={[{ name: "Services", href: "/services" }, { name: s.title, href: `/services/${s.slug}` }]} eyebrow={s.title} title={s.h1}>
         <p>{s.short}</p>
+        {serviceKeywords[s.slug] && (
+          <p className="mt-4 text-sm text-ink-60">
+            <span className="font-semibold text-ink-80">Also known as: </span>
+            {serviceKeywords[s.slug].phrases.join(" · ")}
+          </p>
+        )}
         <div className="mt-8 flex flex-col gap-3 sm:flex-row">
           <CallButton />
           <WhatsAppButton text={`Hi BBMC, I would like to inquire about ${s.title}.`} className="text-ink hover:bg-ink hover:text-white" />
