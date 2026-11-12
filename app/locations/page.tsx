@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { defaultOgImage } from "@/content/site";
 import Link from "next/link";
 import PageHero from "@/components/PageHero";
 import { Container, CtaBand } from "@/components/ui";
@@ -7,9 +8,9 @@ import { areaHref, hotspots, hyderabadLocations, telanganaLocations, zoneLocatio
 export const metadata: Metadata = {
   title: "Areas We Serve | Architects Across Hyderabad & Telangana | BBMC",
   description:
-    "BBMC architects, engineers and vastu consultants serve every zone of Hyderabad, from Kokapet, Gachibowli and Tellapur to Kompally, Uppal, ECIL and the Old City, plus towns across Telangana.",
+    "BBMC architects & vastu consultants serve every zone of Hyderabad, from Kokapet and Tellapur to Kompally, Uppal and ECIL, plus towns across Telangana.",
   alternates: { canonical: "/locations" },
-  openGraph: { url: "/locations" },
+  openGraph: { url: "/locations", images: [defaultOgImage] },
 };
 
 function AreaList({ items }: { items: Location[] }) {

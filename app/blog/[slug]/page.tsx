@@ -19,7 +19,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!p) return {};
   const url = `/blog/${p.slug}`;
   return {
-    title: `${p.title} | BBMC`,
+    title: `${p.title} | BBMC`.length <= 62 ? `${p.title} | BBMC` : p.title,
     description: p.description,
     alternates: { canonical: url },
     openGraph: { type: "article", url, title: p.title, description: p.description, publishedTime: p.date, images: [p.image] },

@@ -8,7 +8,7 @@ import Portfolio from "@/components/Portfolio";
 import { CallButton, Container, CtaBand, WhatsAppButton } from "@/components/ui";
 import { areaHref, getLocation, locations } from "@/content/locations";
 import { services } from "@/content/services";
-import { site } from "@/content/site";
+import { defaultOgImage, site } from "@/content/site";
 
 type Props = { params: Promise<{ location: string }> };
 
@@ -24,7 +24,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     title: l.seoTitle,
     description: l.metaDescription,
     alternates: { canonical: `/${l.slug}` },
-    openGraph: { url: `/${l.slug}`, title: l.seoTitle, description: l.metaDescription },
+    openGraph: { url: `/${l.slug}`, title: l.seoTitle, description: l.metaDescription, images: [defaultOgImage] },
   };
 }
 

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { defaultOgImage } from "@/content/site";
 import PageHero from "@/components/PageHero";
 import { AboutSection, FounderSection, WhyChooseSection } from "@/components/sections";
 import { CtaBand } from "@/components/ui";
@@ -11,7 +12,7 @@ export const metadata: Metadata = {
   description:
     "Balaji Benchmark Consultants (BBMC), founded in 1995 by Er. Paspunoori Srinivas Gupta: architects, engineers and Vaasthu consultants in Hyderabad, Telangana.",
   alternates: { canonical: "/about" },
-  openGraph: { url: "/about" },
+  openGraph: { url: "/about", images: [defaultOgImage] },
 };
 
 export default function AboutPage() {

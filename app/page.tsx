@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { defaultOgImage } from "@/content/site";
 import Hero from "@/components/Hero";
 import Portfolio from "@/components/Portfolio";
 import Testimonials from "@/components/Testimonials";
@@ -13,7 +14,7 @@ import Link from "next/link";
 export const metadata: Metadata = {
   title: "Architects & Vastu Consultants in Hyderabad, Telangana | BBMC",
   alternates: { canonical: "/" },
-  openGraph: { url: "/" },
+  openGraph: { url: "/", images: [defaultOgImage] },
 };
 
 export default function Home() {

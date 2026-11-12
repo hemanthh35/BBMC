@@ -14,8 +14,11 @@ export type Location = {
   areas?: string[];
 };
 
+/** Use the long title if it fits Google's ~60-character display, else the short one. */
+const fitTitle = (long: string, short: string) => (long.length <= 62 ? long : short);
+
 const desc = (area: string) =>
-  `Architects, engineers, interior designers and vastu consultants in ${area}, Hyderabad. House plans, construction, bank estimates and approvals by BBMC since 1995.`;
+  `Architects, engineers, interior designers & vastu consultants in ${area}, Hyderabad. House plans, construction, bank estimates & approvals by BBMC since 1995.`;
 
 const eastHyderabad: Location[] = [
   {
@@ -178,8 +181,8 @@ const hyd = (slug: string, area: string, type: AreaType, about: string, nearby: 
   slug: `architects-in-${slug}`,
   area,
   region: "Hyderabad",
-  seoTitle: `Architects & Vastu Consultants in ${area}, Hyderabad | BBMC`,
-  metaDescription: `Architects, structural engineers, interior designers and vastu consultants in ${area}, Hyderabad. House plans, interiors, construction and approvals by BBMC since 1995.`,
+  seoTitle: fitTitle(`Architects & Vastu Consultants in ${area}, Hyderabad | BBMC`, `Architects & Vastu Consultants in ${area} | BBMC`),
+  metaDescription: `Architects, engineers, interior designers & vastu consultants in ${area}, Hyderabad. House plans, interiors & construction by BBMC since 1995.`,
   intro: [
     about,
     `BBMC has designed and built across Hyderabad since 1995. For ${area} clients we handle the full project with one team: Vaasthu-compliant plans, structural design, interiors, bank estimates, permission drawings and construction. Call or WhatsApp us to arrange a site visit.`,
@@ -308,8 +311,8 @@ const tg = (slug: string, area: string, about: string): Location => ({
   slug: `architects-in-${slug}`,
   area,
   region: "Telangana",
-  seoTitle: `Architects & Vastu Consultants in ${area}, Telangana | BBMC`,
-  metaDescription: `Architects, structural engineers, interior designers and vastu consultants serving ${area}, Telangana. House plans, Vaasthu, structural design and construction by BBMC since 1995.`,
+  seoTitle: fitTitle(`Architects & Vastu Consultants in ${area}, Telangana | BBMC`, `Architects & Vastu Consultants in ${area} | BBMC`),
+  metaDescription: `Architects, engineers & vastu consultants serving ${area}, Telangana. House plans, Vaasthu, structural design & construction by BBMC since 1995.`,
   intro: [
     about,
     `BBMC's work spans homes, campuses and commercial landmarks across Telangana. For clients in ${area} we prepare plans, Vaasthu analysis, structural drawings and estimates, share drawings over WhatsApp and email, and schedule site visits at key stages.`,
@@ -341,7 +344,7 @@ const zone = (slug: string, name: string, about: string[], areas: string[], focu
   area: name,
   region: "Hyderabad",
   seoTitle: `Architects & Vastu Consultants in ${name.split(" (")[0]} | BBMC`,
-  metaDescription: `Architects, engineers, interior designers and vastu consultants across ${name}: ${areas.slice(0, 5).join(", ")} and more. BBMC since 1995.`,
+  metaDescription: `Architects, engineers & vastu consultants across ${name.split(" (")[0]}: ${areas.slice(0, 3).join(", ")} and more. BBMC since 1995.`,
   intro: about,
   focus,
   nearby,

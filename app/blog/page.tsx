@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { defaultOgImage } from "@/content/site";
 import Image from "next/image";
 import Link from "next/link";
 import PageHero from "@/components/PageHero";
@@ -9,7 +10,7 @@ export const metadata: Metadata = {
   title: "Blog: Vastu, House Plans & Construction Guides | BBMC",
   description: "Practical guides on Vastu, house plans, building permission, construction costs and bank loan estimates from BBMC architects in Hyderabad.",
   alternates: { canonical: "/blog" },
-  openGraph: { url: "/blog" },
+  openGraph: { url: "/blog", images: [defaultOgImage] },
 };
 
 export default function BlogPage() {

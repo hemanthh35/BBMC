@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "tsc --noEmit",
-    "images": "node scripts/optimize-images.mjs"
+    "images": "node scripts/optimize-images.mjs",
+    "audit": "node scripts/seo-audit.mjs http://localhost:3000"
   },
   "dependencies": {
     "lucide-react": "^1.72.0",

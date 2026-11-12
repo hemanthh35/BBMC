@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { defaultOgImage } from "@/content/site";
 import PageHero from "@/components/PageHero";
 import Portfolio from "@/components/Portfolio";
 import { JsonLd } from "@/components/seo";
@@ -7,11 +8,11 @@ import { interiors, projects } from "@/content/home";
 import { SITE_URL } from "@/content/site";
 
 export const metadata: Metadata = {
-  title: "Projects & Portfolio | Architecture and Interiors | BBMC Hyderabad",
+  title: "Projects & Portfolio | Architecture & Interiors | BBMC",
   description:
     "BBMC portfolio: residential towers, villas, apartments, commercial complexes, convention halls and interior designs across Hyderabad and Telangana.",
   alternates: { canonical: "/projects" },
-  openGraph: { url: "/projects" },
+  openGraph: { url: "/projects", images: [defaultOgImage] },
 };
 
 export default function ProjectsPage() {

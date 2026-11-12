@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { defaultOgImage } from "@/content/site";
 import PageHero from "@/components/PageHero";
 import FaqList from "@/components/FaqList";
 import { faqSchema, JsonLd } from "@/components/seo";
@@ -10,7 +11,7 @@ export const metadata: Metadata = {
   title: "FAQ | Architects, Vastu & Construction Questions | BBMC",
   description: "Answers to common questions about BBMC's architecture, Vaasthu, structural, interior, construction and approval services across Hyderabad & Telangana.",
   alternates: { canonical: "/faq" },
-  openGraph: { url: "/faq" },
+  openGraph: { url: "/faq", images: [defaultOgImage] },
 };
 
 export default function FaqPage() {
